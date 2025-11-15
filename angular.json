@@ -27,7 +27,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "outputPath": "spn-ranking"
+            "outputPath": "dist/spn-ranking"
           },
           "configurations": {
             "production": {
