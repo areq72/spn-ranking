@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Ranking SPN Esports</h1>
+
+  @if (!players) {
+    <div class="loading">Cargando...</div>
+  }
+
+  @if (players) {
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Jugador</th>
+        <th>Tier</th>
+        <th>LP</th>
+        <th>W / L</th>
+      </tr>
+      </thead>
+
+      <tbody>
+        @for (p of players; track p.puuid; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+
+            <td>
+              <img
+                class="icon"
+                [src]="'https://ddragon.leagueoflegends.com/cdn/15.22.1/img/profileicon/' + p.profileInfo?.profileIconId + '.png'"
+                alt="icon"
+              />
+              {{ p.summonerName }}
+              <span class="tag">#{{ p.summonerTag }}</span>
+            </td>
+
+            <td>{{ p.soloQ?.tier }} {{ p.soloQ?.rank }}</td>
+            <td>{{ p.soloQ?.leaguePoints }}</td>
+            <td>{{ p.soloQ?.wins }} / {{ p.soloQ?.losses }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

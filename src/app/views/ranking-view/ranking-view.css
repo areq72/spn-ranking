@@ -1,0 +1,46 @@
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #111;
+  color: #eee;
+}
+
+thead {
+  background: #222;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 8px;
+  border-radius: 4px;
+}
+
+.tag {
+  color: #888;
+  font-size: 12px;
+}
