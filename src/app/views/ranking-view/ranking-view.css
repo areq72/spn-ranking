@@ -1,46 +1,192 @@
-.container {
-  max-width: 850px;
-  margin: auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+.page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 60px;
+
+  /* fondo redundante (por si styles.css falla) */
+  background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 25px;
+.container {
+  width: 100%;
+  max-width: 900px; /* más estrecho para verse centrado */
+  padding: 0 20px;
 }
+
+/* HEADER */
+
+.header h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin: 0 0 10px;
+  color: var(--spn-gold-dark);
+}
+
+.subtitle {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  color: #d1d1d1;
+}
+
+/* LOADING */
 
 .loading {
-  text-align: center;
-  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  padding: 40px 0;
 }
 
-table {
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--spn-red);
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* CARD */
+
+.card {
+  margin: 0 auto;
+  background: #1c1c1c;
+  border-radius: 18px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+  padding: 16px;
+}
+
+/* TABLE */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.ranking-table {
   width: 100%;
   border-collapse: collapse;
-  background: #111;
-  color: #eee;
+  color: #f1f1f1;
 }
 
-thead {
-  background: #222;
+.ranking-table thead tr {
+  background: linear-gradient(90deg, var(--spn-red-dark), var(--spn-red));
 }
 
-th, td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #333;
+.ranking-table th,
+.ranking-table tr {
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.ranking-table th {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.ranking-table tbody tr {
+  transition: background 0.16s ease, transform 0.12s ease;
+}
+
+.ranking-table tbody tr:hover {
+  background: rgba(193, 18, 31, 0.2);
+  transform: translateY(-1px);
+}
+
+/* RANK PILL */
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 0%, var(--spn-gold), var(--spn-gold-dark));
+  color: #000;
+  font-weight: 800;
+}
+
+/* PLAYER ROW */
+
+.player-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px;
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
-  vertical-align: middle;
-  margin-right: 8px;
-  border-radius: 4px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 2px solid var(--spn-gold);
+  object-fit: cover;
 }
 
-.tag {
-  color: #888;
-  font-size: 12px;
+.summoner-name {
+  font-weight: 700;
+}
+
+.summoner-tag {
+  font-size: 0.75rem;
+  color: var(--spn-gold);
+}
+
+/* TIER + LP PILL */
+
+.tier-pill,
+.lp-pill {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tier-pill {
+  background: rgba(212, 175, 55, 0.25);
+  border: 1px solid var(--spn-gold-dark);
+}
+
+.lp-pill {
+  background: rgba(193, 18, 31, 0.25);
+  border: 1px solid var(--spn-red-dark);
+}
+
+/* W/L */
+
+.wins {
+  color: #4ade80;
+  font-weight: 700;
+}
+
+.losses {
+  color: #f87171;
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .container {
+    max-width: 95%;
+  }
 }

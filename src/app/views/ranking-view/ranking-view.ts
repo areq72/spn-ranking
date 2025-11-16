@@ -1,10 +1,13 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Player} from '../../models/player.model';
 import {PlayerService} from '../../services/player.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ranking-view',
-  imports: [],
+  imports: [
+    TranslatePipe
+  ],
   templateUrl: './ranking-view.html',
   styleUrl: './ranking-view.css',
 })

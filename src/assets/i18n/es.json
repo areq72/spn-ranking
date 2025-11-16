@@ -1,0 +1,33 @@
+{
+  "ranking": {
+    "title": "Ranking SPN Esports",
+    "loading": "Cargando",
+    "headers": {
+      "player": "Jugador",
+      "tier": "Tier",
+      "lp": "LP",
+      "wl": "W / L"
+    }
+  },
+
+  "leagues": {
+    "CHALLENGER": "Challenger",
+    "GRANDMASTER": "Grandmaster",
+    "MASTER": "Master",
+    "DIAMOND": "Diamante",
+    "EMERALD": "Esmeralda",
+    "PLATINUM": "Platino",
+    "GOLD": "Oro",
+    "SILVER": "Plata",
+    "BRONZE": "Bronce",
+    "IRON": "Hierro"
+  },
+
+  "divisions": {
+    "I": "I",
+    "II": "II",
+    "III": "III",
+    "IV": "IV"
+  }
+}
+
