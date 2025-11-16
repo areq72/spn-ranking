@@ -1,43 +1,75 @@
-<div class="container">
-  <h1>Ranking SPN Esports</h1>
+<div class="page">
+  <div class="container">
 
-  @if (!players) {
-    <div class="loading">Cargando...</div>
-  }
+    <header class="header">
+      <h1>{{ 'ranking.title' | translate }}</h1>
+    </header>
 
-  @if (players) {
-    <table>
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Jugador</th>
-        <th>Tier</th>
-        <th>LP</th>
-        <th>W / L</th>
-      </tr>
-      </thead>
+    @if (!players) {
+      <div class="loading loading--center">
+        <span class="spinner"></span>
+        <span>{{ 'ranking.loading' | translate }}</span>
+      </div>
+    }
 
-      <tbody>
-        @for (p of players; track p.puuid; let i = $index) {
-          <tr>
-            <td>{{ i + 1 }}</td>
+    @if (players) {
+      <div class="card">
+        <div class="table-wrapper">
+          <table class="ranking-table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>{{ 'ranking.headers.player' | translate }}</th>
+              <th>{{ 'ranking.headers.tier' | translate }}</th>
+              <th>{{ 'ranking.headers.lp' | translate }}</th>
+              <th>{{ 'ranking.headers.wl' | translate }}</th>
+            </tr>
+            </thead>
 
-            <td>
-              <img
-                class="icon"
-                [src]="'https://ddragon.leagueoflegends.com/cdn/15.22.1/img/profileicon/' + p.profileInfo?.profileIconId + '.png'"
-                alt="icon"
-              />
-              {{ p.summonerName }}
-              <span class="tag">#{{ p.summonerTag }}</span>
-            </td>
+            <tbody>
+              @for (p of players; track p.puuid; let i = $index) {
+                <tr>
+                  <td class="rank-cell">
+                    <span class="rank-badge">{{ i + 1 }}</span>
+                  </td>
 
-            <td>{{ p.soloQ?.tier }} {{ p.soloQ?.rank }}</td>
-            <td>{{ p.soloQ?.leaguePoints }}</td>
-            <td>{{ p.soloQ?.wins }} / {{ p.soloQ?.losses }}</td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  }
+                  <td class="player-cell">
+                    <img
+                      class="icon"
+                      [src]="'https://ddragon.leagueoflegends.com/cdn/15.22.1/img/profileicon/' + p.profileInfo.profileIconId + '.png'"
+                      alt="icon"
+                    />
+                    <div class="player-info">
+                      <span class="summoner-name">{{ p.summonerName }}</span>
+                      <span class="summoner-tag">#{{ p.summonerTag }}</span>
+                    </div>
+                  </td>
+
+                  <td class="tier-cell">
+                    <span class="tier-pill">
+                      {{ p.soloQ.tier }} {{ p.soloQ.rank }}
+                    </span>
+                  </td>
+
+                  <td class="lp-cell">
+                    <span class="lp-pill">
+                      {{ p.soloQ.leaguePoints }} LP
+                    </span>
+                  </td>
+
+                  <td class="wl-cell">
+                    <span class="wins">{{ p.soloQ.wins }}W</span>
+                    <span class="slash">/</span>
+                    <span class="losses">{{ p.soloQ.losses }}L</span>
+                  </td>
+                </tr>
+              }
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    }
+
+  </div>
 </div>
