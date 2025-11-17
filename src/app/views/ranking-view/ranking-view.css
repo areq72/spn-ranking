@@ -292,3 +292,9 @@
     max-width: 95%;
   }
 }
+
+.champion-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}

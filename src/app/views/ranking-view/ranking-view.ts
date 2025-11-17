@@ -3,6 +3,7 @@ import {Player} from '../../models/player.model';
 import {PlayerService} from '../../services/player.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LowerCasePipe} from '@angular/common';
+import {ChampionsService} from '../../services/champion.service';
 
 @Component({
   selector: 'app-ranking-view',
@@ -12,6 +13,9 @@ import {LowerCasePipe} from '@angular/common';
 })
 export class RankingView implements OnInit {
   private playerService = inject(PlayerService);
+  private champsService = inject(ChampionsService);
+
+  private championCache = new Map<number, string>();
 
   players: Player[] | null = null;
 
@@ -24,5 +28,21 @@ export class RankingView implements OnInit {
         this.players = [];
       },
     });
+  }
+
+  getChampionIcon(id: number) {
+    if (this.championCache.has(id)) {
+      return this.buildChampionUrl(this.championCache.get(id)!);
+    }
+
+    this.champsService.getChampionNameById(id).subscribe(name => {
+      if (name) this.championCache.set(id, name);
+    });
+
+    return 'assets/placeholder.png';
+  }
+
+  private buildChampionUrl(championName: string) {
+    return `https://ddragon.leagueoflegends.com/cdn/15.22.1/img/champion/${championName}.png`;
   }
 }

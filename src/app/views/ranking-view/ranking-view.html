@@ -23,6 +23,7 @@
               <th>{{ 'ranking.headers.tier' | translate }}</th>
               <th>{{ 'ranking.headers.lp' | translate }}</th>
               <th>{{ 'ranking.headers.wl' | translate }}</th>
+              <th>{{ 'ranking.headers.champion' | translate }}</th>
             </tr>
             </thead>
 
@@ -64,6 +65,16 @@
                     <span class="wins">{{ p.soloQ.wins }}W</span>
                     <span class="slash">/</span>
                     <span class="losses">{{ p.soloQ.losses }}L</span>
+                  </td>
+
+                  <td class="champion-cell">
+                    @if (p.highestMastery) {
+                      <img
+                        class="champion-icon"
+                        [src]="getChampionIcon(p.highestMastery.championId)"
+                        alt="champion icon"
+                      />
+                    }
                   </td>
                 </tr>
               }
