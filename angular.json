@@ -36,6 +36,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/spn-ranking/",
               "budgets": [
                 {
                   "type": "initial",
