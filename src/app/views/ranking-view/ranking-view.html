@@ -17,7 +17,7 @@
         <div class="table-wrapper">
           <table class="ranking-table">
             <thead>
-            <tr>
+            <tr class="ranking-row">
               <th>#</th>
               <th>{{ 'ranking.headers.player' | translate }}</th>
               <th>{{ 'ranking.headers.tier' | translate }}</th>
@@ -29,7 +29,12 @@
 
             <tbody>
               @for (p of players; track p.puuid; let i = $index) {
-                <tr>
+                <tr
+                  class="ranking-row"
+                  [style.--splash-url]="p.highestMastery
+                    ? 'url(' + getChampionSplash(p.highestMastery.championId) + ')'
+                    : 'none'"
+                >
                   <td class="rank-cell">
                     <div class="rank">
                       <span class="rank-badge">{{ i + 1 }}</span>
@@ -67,22 +72,7 @@
                     <span class="losses">{{ p.soloQ.losses }}L</span>
                   </td>
 
-                  <td class="champion-cell">
-                    @if (p.highestMastery) {
-                      <div class="champion-tooltip">
-                        <img
-                          class="icon"
-                          [src]="getChampionIcon(p.highestMastery.championId)"
-                          alt="champion icon"
-                        />
-                        <span class="tooltip-text">
-                          {{ p.highestMastery.championPoints | number }}
-                        </span>
-                      </div>
-                    } @else {
-                      <img class="icon" src="assets/placeholder.png" alt="placeholder">
-                    }
-                  </td>
+                  <td class="champion-cell"></td>
                 </tr>
               }
             </tbody>

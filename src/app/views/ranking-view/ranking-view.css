@@ -77,8 +77,9 @@
 
 .ranking-table {
   width: 100%;
-  border-collapse: collapse;
   color: #f1f1f1;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 /* Fondo del header */
@@ -93,22 +94,15 @@
 }
 
 .ranking-table thead th:last-child {
+  min-width: 110px;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px; /* idem */
 }
-
-/* Para que no se vea nada “salirse” del borde */
-.ranking-table {
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
 
 .ranking-table th,
 .ranking-table tr {
   padding: 12px 16px;
   font-size: 0.95rem;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .ranking-table th {
@@ -125,23 +119,77 @@
   vertical-align: middle;
 }
 
+.ranking-row {
+  position: relative;
+  overflow: hidden;
+}
+
+.ranking-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--splash-url);
+  background-size: 230px;
+  background-position: right top;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  pointer-events: none;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 1;
+  mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 2%,
+    rgba(0, 0, 0, 0.05) 20%,
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .ranking-row::before {
+    mask-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 2%,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}
+
+.ranking-row > td {
+  position: relative;
+  z-index: 1;
+}
+
+.ranking-table {
+  border-collapse: separate;
+  border-spacing: 0 6px;
+}
+
+.ranking-table tbody td {
+  z-index: 0;
+  background: #252525;
+}
+
+.ranking-table tbody td:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.ranking-table tbody td:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
 .ranking-table tbody tr:hover td {
   background: rgba(193, 18, 31, 0.2);
 }
 
-.ranking-table tbody tr:hover td:first-child {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-
-.ranking-table tbody tr:hover td:last-child {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-.ranking-table tbody tr:hover {
-  transform: translateY(-1px);
-}
 
 
 /* RANK PILL */
@@ -177,6 +225,10 @@
   border-radius: 10px;
   border: 2px solid var(--spn-gold);
   object-fit: cover;
+}
+
+.player-info {
+  text-wrap: nowrap;
 }
 
 .summoner-name {
@@ -291,33 +343,4 @@
   .container {
     max-width: 95%;
   }
-}
-
-.champion-tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip-text {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-
-  position: absolute;
-  bottom: 110%; /* arriba del icono */
-  left: 50%;
-  transform: translateX(-50%);
-
-  background: rgba(0, 0, 0, 0.85);
-  color: white;
-  padding: 6px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-  font-size: 12px;
-  z-index: 10;
-}
-
-.champion-tooltip:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
 }
