@@ -2,6 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Player} from '../models/player.model';
 import { environment } from '../../environments/environment';
+import {map} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,8 @@ export class PlayerService {
   private baseUrl = `${environment.baseUrl}/api/league`;
 
   getPlayers() {
-    return this.http.get<Player[]>(`${this.baseUrl}/players`);
+    return this.http.get<Player[]>(`${this.baseUrl}/players`).pipe(
+      map(players => players.map(player => new Player(player)))
+    );
   }
 }

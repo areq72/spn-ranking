@@ -6,7 +6,8 @@
       "player": "Jugador",
       "tier": "Tier",
       "lp": "LP",
-      "wl": "W / L"
+      "wl": "W / L",
+      "champion": "Campeón"
     }
   },
 

@@ -14,127 +14,82 @@
 
     @if (players) {
       <div class="card">
-        <div class="dock">
-          <div class="effect"></div>
-          <div class="tint"></div>
-          <div class="shine"></div>
-          <div class="text">
-            <div class="table-wrapper">
-              <table class="ranking-table">
-                <thead>
+        <div class="table-wrapper">
+          <table class="ranking-table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>{{ 'ranking.headers.player' | translate }}</th>
+              <th>{{ 'ranking.headers.tier' | translate }}</th>
+              <th>{{ 'ranking.headers.lp' | translate }}</th>
+              <th>{{ 'ranking.headers.wl' | translate }}</th>
+              <th>{{ 'ranking.headers.champion' | translate }}</th>
+            </tr>
+            </thead>
+
+            <tbody>
+              @for (p of players; track p.puuid; let i = $index) {
                 <tr>
-                  <th>#</th>
-                  <th>{{ 'ranking.headers.player' | translate }}</th>
-                  <th>{{ 'ranking.headers.tier' | translate }}</th>
-                  <th>{{ 'ranking.headers.lp' | translate }}</th>
-                  <th>{{ 'ranking.headers.wl' | translate }}</th>
-                </tr>
-                </thead>
+                  <td class="rank-cell">
+                    <div class="rank">
+                      <span class="rank-badge">{{ i + 1 }}</span>
+                    </div>
+                  </td>
 
-                <tbody>
-                  @for (p of players; track p.puuid; let i = $index) {
-                    <tr>
-                      <td class="rank-cell">
-                        <div class="rank">
-                          <span class="rank-badge">{{ i + 1 }}</span>
-                        </div>
-                      </td>
+                  <td class="player-cell">
+                    <img
+                      class="icon"
+                      [src]="'https://ddragon.leagueoflegends.com/cdn/' + environment.lolPatch + '/img/profileicon/' + p.profileInfo.profileIconId + '.png'"
+                      alt="icon"
+                    />
+                    <div class="player-info">
+                      <span class="summoner-name">{{ p.name }} </span>
+                      <span class="summoner-tag">{{ p.summonerName }}</span>
+                      <span class="summoner-tag">#{{ p.summonerTag }}</span>
+                    </div>
+                  </td>
 
-                      <td class="player-cell">
+                  <td class="tier-cell">
+                    <span class="tier-pill tier-{{ p.soloQ.tier | lowercase }}">
+                      {{ p.soloQ.tier }} {{ p.soloQ.rank }}
+                    </span>
+                  </td>
+
+                  <td class="lp-cell">
+                    <span class="lp-pill">
+                      {{ p.soloQ.leaguePoints }} LP
+                    </span>
+                  </td>
+
+                  <td class="wl-cell">
+                    <span class="wins">{{ p.soloQ.wins }}W</span>
+                    <span class="slash">/</span>
+                    <span class="losses">{{ p.soloQ.losses }}L</span>
+                  </td>
+
+                  <td class="champion-cell">
+                    @if (p.highestMastery) {
+                      <div class="champion-tooltip">
                         <img
                           class="icon"
-                          [src]="'https://ddragon.leagueoflegends.com/cdn/15.22.1/img/profileicon/' + p.profileInfo.profileIconId + '.png'"
-                          alt="icon"
+                          [src]="getChampionIcon(p.highestMastery.championId)"
+                          alt="champion icon"
                         />
-                        <div class="player-info">
-                          <span class="summoner-name">{{ p.summonerName }}</span>
-                          <span class="summoner-tag">#{{ p.summonerTag }}</span>
-                        </div>
-                      </td>
-
-                      <td class="tier-cell">
-                        <span class="tier-pill tier-{{ p.soloQ.tier | lowercase }}">
-                          {{ p.soloQ.tier }} {{ p.soloQ.rank }}
+                        <span class="tooltip-text">
+                          {{ p.highestMastery.championPoints | number }}
                         </span>
-                      </td>
+                      </div>
+                    } @else {
+                      <img class="icon" src="assets/placeholder.png" alt="placeholder">
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
 
-                      <td class="lp-cell">
-                        <span class="lp-pill">
-                          {{ p.soloQ.leaguePoints }} LP
-                        </span>
-                      </td>
-
-                      <td class="wl-cell">
-                        <span class="wins">{{ p.soloQ.wins }}W</span>
-                        <span class="slash">/</span>
-                        <span class="losses">{{ p.soloQ.losses }}L</span>
-                      </td>
-                    </tr>
-                  }
-                </tbody>
-
-              </table>
-            </div>
-          </div>
+          </table>
         </div>
       </div>
-
-      <svg style="display: none">
-        <filter
-          id="glass-distortion"
-          x="0%"
-          y="0%"
-          width="100%"
-          height="100%"
-          filterUnits="objectBoundingBox"
-        >
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.01 0.01"
-            numOctaves="1"
-            seed="5"
-            result="turbulence"
-          />
-          <!-- Seeds: 14, 17,  -->
-
-          <feComponentTransfer in="turbulence" result="mapped">
-            <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-            <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-            <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-          </feComponentTransfer>
-
-          <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-
-          <feSpecularLighting
-            in="softMap"
-            surfaceScale="5"
-            specularConstant="1"
-            specularExponent="100"
-            lighting-color="white"
-            result="specLight"
-          >
-            <fePointLight x="-200" y="-200" z="300" />
-          </feSpecularLighting>
-
-          <feComposite
-            in="specLight"
-            operator="arithmetic"
-            k1="0"
-            k2="1"
-            k3="1"
-            k4="0"
-            result="litImage"
-          />
-
-          <feDisplacementMap
-            in="SourceGraphic"
-            in2="softMap"
-            scale="150"
-            xChannelSelector="R"
-            yChannelSelector="G"
-          />
-        </filter>
-      </svg>
     }
 
   </div>
