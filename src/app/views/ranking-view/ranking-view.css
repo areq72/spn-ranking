@@ -225,7 +225,7 @@
 .tier-gold {
   background: rgba(212, 175, 55, 0.25);
   border: 1px solid var(--spn-gold-dark);
-  color: var(--spn-gold-light);
+  color: var(--spn-gold);
 }
 
 .tier-platinum {
