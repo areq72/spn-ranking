@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, shareReplay } from 'rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ChampionsService {
@@ -8,7 +9,7 @@ export class ChampionsService {
   private http = inject(HttpClient);
 
   champions$ = this.http
-    .get<any>('https://ddragon.leagueoflegends.com/cdn/15.22.1/data/en_US/champion.json')
+    .get<any>(`https://ddragon.leagueoflegends.com/cdn/${environment.lolPatch}/data/en_US/champion.json`)
     .pipe(
       map(data => Object.values(data.data)),
       shareReplay(1)

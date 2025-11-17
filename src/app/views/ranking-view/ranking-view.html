@@ -39,7 +39,7 @@
                   <td class="player-cell">
                     <img
                       class="icon"
-                      [src]="'https://ddragon.leagueoflegends.com/cdn/15.22.1/img/profileicon/' + p.profileInfo.profileIconId + '.png'"
+                      [src]="'https://ddragon.leagueoflegends.com/cdn/' + environment.lolPatch + '/img/profileicon/' + p.profileInfo.profileIconId + '.png'"
                       alt="icon"
                     />
                     <div class="player-info">
@@ -69,11 +69,18 @@
 
                   <td class="champion-cell">
                     @if (p.highestMastery) {
-                      <img
-                        class="champion-icon"
-                        [src]="getChampionIcon(p.highestMastery.championId)"
-                        alt="champion icon"
-                      />
+                      <div class="champion-tooltip">
+                        <img
+                          class="icon"
+                          [src]="getChampionIcon(p.highestMastery.championId)"
+                          alt="champion icon"
+                        />
+                        <span class="tooltip-text">
+                          {{ p.highestMastery.championPoints | number }}
+                        </span>
+                      </div>
+                    } @else {
+                      <img class="icon" src="assets/placeholder.png" alt="placeholder">
                     }
                   </td>
                 </tr>
