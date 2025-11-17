@@ -11,16 +11,35 @@ export interface ProfileInfo {
   profileIconId: number;
 }
 
-export interface Player {
-  name: string;
-  puuid: string;
-  summonerName: string;
-  summonerTag: string;
+export interface ChampionMastery {
+  championId: number;
+  championLevel: number;
+  championPoints: number;
+}
 
-  soloQ: QueueInfo;
-  flexQ: QueueInfo;
+export class Player {
+  name!: string;
+  puuid!: string;
+  summonerName!: string;
+  summonerTag!: string;
 
-  profileInfo: ProfileInfo;
+  soloQ!: QueueInfo;
+  flexQ!: QueueInfo;
 
-  lastUpdated: string;
+  profileInfo!: ProfileInfo;
+  masteries!: ChampionMastery[];
+
+  lastUpdated!: string;
+
+  constructor(partial: Partial<Player>) {
+    Object.assign(this, partial);
+
+    this.masteries = partial.masteries
+      ? partial.masteries.sort((a, b) => b.championPoints - a.championPoints)
+      : [];
+  }
+
+  get highestMastery(): ChampionMastery | null {
+    return this.masteries[0] ?? null;
+  }
 }
