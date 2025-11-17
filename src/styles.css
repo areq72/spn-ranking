@@ -3,7 +3,7 @@
   --spn-black-soft: #1c1c1c;
 
   --spn-red: #c1121f;
-  --spn-red-dark: #b3001b;
+  --spn-red-dark: #7e0014;
 
   --spn-gold: #d4af37;
   --spn-gold-dark: #a67c00;
@@ -19,7 +19,7 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%) !important;
+  background: #1c1c1c !important;
   color: #f5f5f5;
   font-family: Andale Mono, monospace;
   overflow-x: hidden;
