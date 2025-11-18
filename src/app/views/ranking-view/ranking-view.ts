@@ -5,6 +5,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { LowerCasePipe } from '@angular/common';
 import { ChampionsService } from '../../services/champion.service';
 import { environment } from '../../../environments/environment';
+import {catchError, finalize} from 'rxjs';
 
 @Component({
   selector: 'app-ranking-view',
@@ -21,16 +22,10 @@ export class RankingView implements OnInit {
   private championCache = new Map<number, string>();
 
   players: Player[] | null = null;
+  loadingPlayers = true;
 
   ngOnInit() {
-    this.playerService.getPlayers().subscribe({
-      next: (data) => {
-        this.players = data;
-      },
-      error: () => {
-        this.players = [];
-      },
-    });
+    this.getPlayers();
   }
 
   getChampionSplash(championId: number): string {
@@ -44,5 +39,19 @@ export class RankingView implements OnInit {
     }
 
     return `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championName}_0.jpg`;
+  }
+
+  private getPlayers() {
+    this.loadingPlayers = true;
+    this.playerService.getPlayers()
+      .pipe(
+        finalize(() => (this.loadingPlayers = false)),
+        catchError(() => this.players = [])
+      )
+      .subscribe({
+        next: (data) => {
+          this.players = data;
+        }
+      });
   }
 }

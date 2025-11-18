@@ -5,9 +5,6 @@
   align-items: flex-start;
   justify-content: center;
   padding-top: 60px;
-
-  /* fondo redundante (por si styles.css falla) */
-  background: #1c1c1c !important;
 }
 
 .container {
@@ -21,7 +18,7 @@
 .header h1 {
   text-align: center;
   font-size: 2.4rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.06em;
   margin: 0 0 20px;
   color: var(--spn-gold-dark);
@@ -315,6 +312,10 @@
 }
 
 /* W/L */
+
+.wl-cell {
+  text-wrap: nowrap;
+}
 
 .wins {
   color: #4ade80;
