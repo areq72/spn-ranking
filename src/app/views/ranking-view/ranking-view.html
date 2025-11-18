@@ -5,14 +5,30 @@
       <h1>{{ 'ranking.title' | translate }}</h1>
     </header>
 
-    @if (!players) {
+    @if (loadingPlayers) {
       <div class="loading loading--center">
         <span class="spinner"></span>
         <span>{{ 'ranking.loading' | translate }}</span>
       </div>
     }
 
-    @if (players) {
+    @if (!loadingPlayers) {
+      <div class="queue-switcher">
+        <button
+          class="queue-pill"
+          [class.queue-pill--active]="queueType === 'soloQ'"
+          (click)="switchQueue('soloQ')">
+          Solo/Duo
+        </button>
+
+        <button
+          class="queue-pill"
+          [class.queue-pill--active]="queueType === 'flexQ'"
+          (click)="switchQueue('flexQ')">
+          Flex
+        </button>
+      </div>
+
       <div class="card">
         <div class="table-wrapper">
           <table class="ranking-table">
@@ -20,17 +36,18 @@
             <tr class="ranking-row">
               <th>#</th>
               <th>{{ 'ranking.headers.player' | translate }}</th>
-              <th>{{ 'ranking.headers.tier' | translate }}</th>
+              <th class="tier-cell">{{ 'ranking.headers.tier' | translate }}</th>
               <th>{{ 'ranking.headers.lp' | translate }}</th>
-              <th class="nowrap">{{ 'ranking.headers.wl' | translate }}</th>
+              <th>{{ 'ranking.headers.wl' | translate }}</th>
               <th>{{ 'ranking.headers.champion' | translate }}</th>
             </tr>
             </thead>
 
-            <tbody>
+            <tbody [class.reordering]="isReordering">
               @for (p of players; track p.puuid; let i = $index) {
                 <tr
-                  class="ranking-row"
+                  [id]="p.puuid"
+                  class="ranking-row anim-row"
                   [style.--splash-url]="p.highestMastery
                     ? 'url(' + getChampionSplash(p.highestMastery.championId) + ')'
                     : 'none'"
@@ -55,21 +72,21 @@
                   </td>
 
                   <td class="tier-cell">
-                    <span class="tier-pill tier-{{ p.soloQ.tier | lowercase }}">
-                      {{ 'leagues.' + p.soloQ.tier | translate }} {{ p.soloQ.rank }}
+                    <span class="tier-pill tier-{{ p.getQueue(queueType).tier | lowercase }}">
+                      {{ 'leagues.' + p.getQueue(queueType).tier | translate }} {{ p.getQueue(queueType).rank }}
                     </span>
                   </td>
 
                   <td class="lp-cell">
                     <span class="lp-pill">
-                      {{ p.soloQ.leaguePoints }} LP
+                      {{ p.getQueue(queueType).leaguePoints }} LP
                     </span>
                   </td>
 
                   <td class="wl-cell">
-                    <span class="wins">{{ p.soloQ.wins }}W </span>
+                    <span class="wins">{{ p.getQueue(queueType).wins }}W </span>
                     <span class="slash">/</span>
-                    <span class="losses"> {{ p.soloQ.losses }}L</span>
+                    <span class="losses"> {{ p.getQueue(queueType).losses }}L</span>
                   </td>
 
                   <td class="champion-cell"></td>

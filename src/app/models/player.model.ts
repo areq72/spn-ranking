@@ -1,3 +1,5 @@
+import { QueueType } from '../constants/constants';
+
 export interface QueueInfo {
   tier: string;
   rank: string;
@@ -41,5 +43,9 @@ export class Player {
 
   get highestMastery(): ChampionMastery | null {
     return this.masteries[0] ?? null;
+  }
+
+  getQueue(queue: QueueType): QueueInfo {
+    return queue === 'flexQ' ? this.flexQ : this.soloQ;
   }
 }

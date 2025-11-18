@@ -59,7 +59,7 @@
 
 .card {
   margin: 0 auto;
-  background: #1c1c1c;
+  background: var(--spn-black-soft-40);
   border-radius: 18px;
   border: 1px solid rgba(212, 175, 55, 0.3);
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
@@ -120,10 +120,9 @@
   position: relative;
   overflow: hidden;
   border-radius: 999px;
-  background-color: #252525; /* color base de la fila */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  background-color: #252525;
 
-  /* 1ª capa: degradado oscuro que se va disipando a la izquierda
-     2ª capa: el splash del campeón (inyectado con --splash-url) */
   background-image:
     linear-gradient(
       to left,
@@ -141,15 +140,11 @@
   background-size: 260px auto, 260px auto;
 }
 
-/* Contenido normal, sin fondos sólidos que tapen el splash */
 .ranking-table tbody td {
   background: transparent;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
-/* Hover: resaltamos la fila completa, no cada celda por separado */
 .ranking-table tbody tr:hover {
-  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.4);
   transform: translateY(-1px);
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
@@ -173,7 +168,25 @@
   border-bottom-right-radius: 20px;
 }
 
+@keyframes rowFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(-1px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+/* Cuando el tbody tiene la clase .reordering, animamos todas las filas */
+tbody.reordering .ranking-row {
+  animation-name: rowFadeUp;
+  animation-duration: 250ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+  animation-delay: calc(var(--row-index) * 25ms);
+}
 
 /* RANK PILL */
 
@@ -224,6 +237,10 @@
 }
 
 /* TIER + LP PILL */
+
+.tier-cell {
+  min-width: 140px;
+}
 
 .tier-cell,
 .lp-cell,
@@ -337,4 +354,33 @@
   .container {
     max-width: 95%;
   }
+}
+
+.queue-switcher {
+  display: flex;
+  justify-content: start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.queue-pill {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: var(--spn-black-soft-40);
+  color: var(--spn-gold);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.queue-pill:hover {
+  transform: translateY(-1px);
+}
+
+.queue-pill--active {
+  background: linear-gradient(90deg, var(--spn-red-dark), var(--spn-red));
+  color: #fff;
+  box-shadow: 0 0 12px rgba(193, 18, 31, 0.6);
 }

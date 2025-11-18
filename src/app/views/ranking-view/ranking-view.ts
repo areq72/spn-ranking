@@ -5,7 +5,9 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { LowerCasePipe } from '@angular/common';
 import { ChampionsService } from '../../services/champion.service';
 import { environment } from '../../../environments/environment';
-import {catchError, finalize} from 'rxjs';
+import { catchError, finalize } from 'rxjs';
+import { QueueType } from '../../constants/constants';
+import { compareElo } from '../../utils/tier-utils';
 
 @Component({
   selector: 'app-ranking-view',
@@ -21,11 +23,19 @@ export class RankingView implements OnInit {
 
   private championCache = new Map<number, string>();
 
-  players: Player[] | null = null;
-  loadingPlayers = true;
+  players: Player[] = [];
+  loadingPlayers = false;
+  isReordering = false;
+  queueType: QueueType = 'soloQ';
 
   ngOnInit() {
     this.getPlayers();
+  }
+
+  switchQueue(queue: QueueType) {
+    this.queueType = queue;
+    this.sortPlayers();
+    this.playReorderAnimation();
   }
 
   getChampionSplash(championId: number): string {
@@ -43,15 +53,32 @@ export class RankingView implements OnInit {
 
   private getPlayers() {
     this.loadingPlayers = true;
-    this.playerService.getPlayers()
+    this.playerService
+      .getPlayers()
       .pipe(
         finalize(() => (this.loadingPlayers = false)),
-        catchError(() => this.players = [])
+        catchError(() => (this.players = [])),
       )
       .subscribe({
         next: (data) => {
           this.players = data;
-        }
+        },
       });
+  }
+
+  private sortPlayers() {
+    this.players.sort((a, b) => compareElo(a, b, this.queueType));
+  }
+
+  private playReorderAnimation() {
+    this.isReordering = false;
+
+    requestAnimationFrame(() => {
+      this.isReordering = true;
+
+      setTimeout(() => {
+        this.isReordering = false;
+      }, 300);
+    });
   }
 }
