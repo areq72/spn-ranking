@@ -66,8 +66,9 @@
                     />
                     <div class="player-info">
                       <span class="summoner-name">{{ p.name }} </span>
-                      <span class="summoner-tag">{{ p.summonerName }}</span>
-                      <span class="summoner-tag">#{{ p.summonerTag }}</span>
+                      <span class="summoner-tag" (click)="navigateToOPGG(p)">
+                        {{ p.summonerName }}#{{ p.summonerTag }}
+                      </span>
                     </div>
                   </td>
 

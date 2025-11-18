@@ -51,6 +51,17 @@ export class RankingView implements OnInit {
     return `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championName}_0.jpg`;
   }
 
+  navigateToOPGG(p: Player) {
+    const region = 'euw';
+
+    const gameName = encodeURIComponent(p.summonerName);
+    const tagLine  = encodeURIComponent(p.summonerTag);
+
+    const url = `https://op.gg/lol/summoners/${region}/${gameName}-${tagLine}`;
+
+    window.open(url, '_blank', 'noopener');
+  }
+
   private getPlayers() {
     this.loadingPlayers = true;
     this.playerService
@@ -81,4 +92,6 @@ export class RankingView implements OnInit {
       }, 300);
     });
   }
+
+
 }
