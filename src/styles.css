@@ -138,7 +138,7 @@ body::before {
       var(--spn-black-soft-90) 70%,
       var(--spn-black-soft) 100%
     ),
-    url(/assets/noxus-page-bg.png);
+    url(assets/noxus-page-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
