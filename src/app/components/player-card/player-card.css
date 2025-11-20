@@ -34,6 +34,7 @@
 .player-rank {
   width: 60px;
   height: 60px;
+  min-width: 36px;
   display: flex;
   align-items: center;
   font-size: 28px;
