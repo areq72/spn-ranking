@@ -4,10 +4,11 @@ import { ChampionsService } from '../../services/champion.service';
 import { environment } from '../../../environments/environment';
 import { QueueType } from '../../constants/constants';
 import { LowerCasePipe } from '@angular/common';
+import { TranslatePipe } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-player-card',
-  imports: [LowerCasePipe],
+  imports: [LowerCasePipe, TranslatePipe],
   templateUrl: './player-card.html',
   styleUrl: './player-card.css',
 })

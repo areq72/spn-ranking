@@ -41,7 +41,7 @@
     <div class="player-card__badges">
 
       <div class="tier-pill tier-{{ player()?.getQueue(queue() ?? 'soloQ')?.tier | lowercase }}">
-        {{ player()?.soloQ?.tier }} {{ player()?.soloQ?.rank }}
+        {{ 'leagues.' + player()?.soloQ?.tier | translate }} {{ player()?.soloQ?.rank }}
       </div>
 
       <div class="badge badge--lp">
