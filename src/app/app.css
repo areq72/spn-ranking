@@ -1,25 +1,15 @@
 .page {
   min-height: 100%;
   width: 100%;
-
-  background-image:
-    linear-gradient(
-      to bottom,
-      var(--spn-black-soft-10) 50%,
-      var(--spn-black-soft-20) 55%,
-      var(--spn-black-soft-30) 60%,
-      var(--spn-black-soft-40) 65%,
-      var(--spn-black-soft-90) 70%,
-      var(--spn-black-soft) 100%
-    ),
-    url(../assets/noxus-page-bg.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
 }
 
 .logo-container {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .logo {
+    height: 200px;
+  }
 }
