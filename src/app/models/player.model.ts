@@ -48,4 +48,15 @@ export class Player {
   getQueue(queue: QueueType): QueueInfo {
     return queue === 'flexQ' ? this.flexQ : this.soloQ;
   }
+
+  navigateToOPGG() {
+    const region = 'euw';
+
+    const gameName = encodeURIComponent(this.summonerName);
+    const tagLine = encodeURIComponent(this.summonerTag);
+
+    const url = `https://op.gg/lol/summoners/${region}/${gameName}-${tagLine}`;
+
+    window.open(url, '_blank', 'noopener');
+  }
 }

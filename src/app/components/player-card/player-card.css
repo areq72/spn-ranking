@@ -1,0 +1,261 @@
+/* player-card.component.scss */
+
+.player-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 40px;
+  background: var(--spn-gray);
+  color: #fff;
+  overflow: hidden;
+}
+
+.player-card:hover {
+  transform: translateY(-2px);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+/* TOP */
+
+.player-card__top {
+  display: flex;
+  padding: 20px 28px 10px 28px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.player-card__left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Logo redondo estilo ejemplo */
+.player-rank {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+  justify-content: center;
+  background-image: url("/assets/rank-ball.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Nombre + tag */
+
+.player-card__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.player-card__name-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.player-card__summoner-name {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.player-card__tagline {
+  font-size: 20px;
+  font-weight: 500;
+  color: #f0c45a;
+}
+
+.player-card__tagline:hover {
+  text-decoration: underline;
+}
+
+/* Avatar */
+
+.player-card__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.player-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Divider */
+
+.player-card__divider {
+  margin: 16px -28px 0;
+  height: 2px;
+  background: linear-gradient(to left, var(--spn-gold), var(--spn-gold-dark));
+}
+
+/* BOTTOM */
+
+.player-card__bottom {
+  display: flex;
+  padding: 10px 28px;
+  align-items: center;
+  gap: 20px;
+  min-height: 110px;
+  background-image:
+    linear-gradient(
+      to left,
+      rgba(37, 37, 37, 0) 0%,
+      rgba(37, 37, 37, 0.9) 84%,
+      rgba(37, 37, 37, 1) 100%
+    ),
+    var(--splash-url);
+  background-repeat: no-repeat, no-repeat;
+  background-position: right top, right top;
+  background-size: 400px auto, 400px auto;
+}
+
+.player-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Chips */
+
+.badge {
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.badge--lp {
+  background: #b31935;
+  color: #ffffff;
+}
+
+.badge--record {
+  background: #3a3a3f;
+  color: #ffffff;
+}
+
+.record {
+  font-weight: 600;
+}
+
+.record--wins {
+  color: #2fd066;
+}
+
+.record--losses {
+  color: #e65050;
+}
+
+.record__slash {
+  margin: 0 6px;
+  opacity: 0.7;
+}
+
+/* Splash derecha */
+
+.player-card__splash {
+  margin-left: auto;
+  overflow: hidden;
+  width: 40%;
+  min-width: 300px;
+  min-height: 110px;
+  background-image:
+    linear-gradient(
+      to left,
+      rgba(37, 37, 37, 0.3) 120px,
+      rgba(37, 37, 37, 0.5) 145px,
+      rgba(37, 37, 37, 0.6) 155px,
+      rgba(37, 37, 37, 0.7) 165px,
+      rgba(37, 37, 37, 0.8) 175px,
+      rgba(37, 37, 37, 0.9) 185px,
+      rgba(37, 37, 37, 1) 200px
+    ),
+    var(--splash-url);
+  background-repeat: no-repeat, no-repeat;
+  background-position: right top, right top;
+  background-size: 300px auto, 300px auto;
+}
+
+
+@media (max-width: 900px) {
+  .player-card {
+    border-radius: 20px;
+  }
+
+  .player-card__top {
+    padding: 10px 14px 5px 14px;
+  }
+
+  .player-card__bottom {
+    padding: 5px 14px;
+    min-height: 55px;
+    background-size: 200px auto, 200px auto;
+  }
+
+  .player-rank {
+    font-size: 14px;
+  }
+
+  .player-card__left {
+    gap: 9px;
+  }
+
+  .player-rank {
+    width: 36px;
+    height: 36px;
+  }
+
+  .player-card__logo-inner {
+    border-width: 2px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35);
+  }
+
+  .player-card__avatar {
+    width: 36px;
+    height: 36px;
+    border-width: 2px;
+  }
+
+  .player-card__summoner-name {
+    font-size: 16px;
+  }
+
+  .player-card__tagline {
+    font-size: 12px;
+  }
+
+  .player-card__region {
+    font-size: 10px;
+  }
+
+  .player-card__divider {
+    margin: 8px -14px 0;
+    height: 1px;
+  }
+
+  .badge {
+    padding: 4px 11px;
+    font-size: 10px;
+  }
+
+  .player-card__badges {
+    gap: 6px;
+  }
+}
+

@@ -1,6 +1,7 @@
 :root {
   --spn-black: #0a0a0a;
   --spn-black-soft: #1c1c1c;
+  --spn-gray: #252525;
 
   --spn-black-soft-10: rgb(28, 28, 28, 0.1);
   --spn-black-soft-20: rgb(28, 28, 28, 0.2);
@@ -14,6 +15,9 @@
 
   --spn-red: #c1121f;
   --spn-red-dark: #7e0014;
+  --spn-red-darker: #5a000d;
+
+  --spn-red-40: rgba(193, 18, 31, 0.4);
 
   --spn-gold: #d4af37;
   --spn-gold-dark: #a67c00;
@@ -40,72 +44,80 @@ app-root {
   min-height: 100%;
 }
 
+.tier-pill,
+.lp-pill {
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
 .tier-pill {
   background: rgba(212, 175, 55, 0.25);
-  border: 1px solid var(--spn-gold-dark);
+  color: var(--spn-gold-dark);
 }
 
 .tier-iron {
   background: rgba(80, 80, 80, 0.25);
-  border: 1px solid #5a5a5a;
-  color: #d0d0d0;
+  color: #5a5a5a;
 }
 
 .tier-bronze {
   background: rgba(205, 127, 50, 0.25);
-  border: 1px solid #8b5a2b;
   color: #e0b48a;
 }
 
 .tier-silver {
   background: rgba(192, 192, 192, 0.25);
-  border: 1px solid #a9a9a9;
   color: #e5e5e5;
 }
 
 .tier-gold {
   background: rgba(212, 175, 55, 0.25);
-  border: 1px solid var(--spn-gold-dark);
   color: var(--spn-gold);
 }
 
 .tier-platinum {
   background: rgba(0, 255, 219, 0.20);
-  border: 1px solid #00c9a7;
   color: #00f5d4;
 }
 
 .tier-emerald {
   background: rgba(0, 150, 90, 0.25);
-  border: 1px solid #008f59;
   color: #4affb7;
 }
 
 .tier-diamond {
   background: rgba(100, 149, 237, 0.25);
-  border: 1px solid #4169e1;
   color: #87a7ff;
 }
 
 .tier-master {
   background: rgba(176, 0, 255, 0.25);
-  border: 1px solid #8b00cc;
   color: #e9b0ff;
 }
 
 .tier-grandmaster {
   background: rgba(255, 0, 0, 0.25);
-  border: 1px solid #b30000;
   color: #ff9999;
 }
 
 .tier-challenger {
   background: rgba(0, 180, 255, 0.25);
-  border: 1px solid #0099dd;
   color: #9bdcff;
 }
 
 .lp-pill {
   background: rgba(193, 18, 31, 0.25);
   border: 1px solid var(--spn-red-dark);
+}
+
+@media (max-width: 900px) {
+  .tier-pill {
+    font-size: 10px;
+  }
 }

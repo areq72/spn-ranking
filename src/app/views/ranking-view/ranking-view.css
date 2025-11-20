@@ -4,7 +4,6 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 60px;
 }
 
 .container {
@@ -58,12 +57,14 @@
 /* CARD */
 
 .card {
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   background: var(--spn-black-soft-40);
   border-radius: 18px;
   border: 1px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
   padding: 16px;
+  gap: 16px;
 }
 
 /* TABLE */
@@ -263,21 +264,6 @@ tbody.reordering .ranking-row {
   text-wrap: nowrap;
 }
 
-/* W/L */
-
-.wl-cell {
-  text-wrap: nowrap;
-}
-
-.wins {
-  color: #4ade80;
-  font-weight: 700;
-}
-
-.losses {
-  color: #f87171;
-  font-weight: 700;
-}
 
 /* RESPONSIVE */
 
@@ -299,8 +285,8 @@ tbody.reordering .ranking-row {
 }
 
 .queue-pill {
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  background: var(--spn-black-soft-40);
+  border: 0;
+  background: var(--spn-black-soft);
   color: var(--spn-gold);
   padding: 6px 16px;
   border-radius: 999px;
@@ -315,7 +301,6 @@ tbody.reordering .ranking-row {
 }
 
 .queue-pill--active {
-  background: linear-gradient(90deg, var(--spn-red-dark), var(--spn-red));
-  color: #fff;
-  box-shadow: 0 0 12px rgba(193, 18, 31, 0.6);
+  background: var(--spn-red-40);
+  color: #ffffff;
 }

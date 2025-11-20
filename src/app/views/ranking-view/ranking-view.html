@@ -1,10 +1,6 @@
 <div class="page">
   <div class="container">
 
-    <header class="header">
-      <h1>{{ 'ranking.title' | translate }}</h1>
-    </header>
-
     @if (loadingPlayers) {
       <div class="loading loading--center">
         <span class="spinner"></span>
@@ -30,73 +26,9 @@
       </div>
 
       <div class="card">
-        <div class="table-wrapper">
-          <table class="ranking-table">
-            <thead>
-            <tr class="ranking-row">
-              <th>#</th>
-              <th>{{ 'ranking.headers.player' | translate }}</th>
-              <th class="tier-cell">{{ 'ranking.headers.tier' | translate }}</th>
-              <th>{{ 'ranking.headers.lp' | translate }}</th>
-              <th>{{ 'ranking.headers.wl' | translate }}</th>
-              <th>{{ 'ranking.headers.champion' | translate }}</th>
-            </tr>
-            </thead>
-
-            <tbody [class.reordering]="isReordering">
-              @for (p of players; track p.puuid; let i = $index) {
-                <tr
-                  [id]="p.puuid"
-                  class="ranking-row anim-row"
-                  [style.--splash-url]="p.highestMastery
-                    ? 'url(' + getChampionSplash(p.highestMastery.championId) + ')'
-                    : 'none'"
-                >
-                  <td class="rank-cell">
-                    <div class="rank">
-                      <span class="rank-badge">{{ i + 1 }}</span>
-                    </div>
-                  </td>
-
-                  <td class="player-cell">
-                    <img
-                      class="icon"
-                      [src]="'https://ddragon.leagueoflegends.com/cdn/' + environment.lolPatch + '/img/profileicon/' + p.profileInfo.profileIconId + '.png'"
-                      alt="icon"
-                    />
-                    <div class="player-info">
-                      <span class="summoner-name">{{ p.name }} </span>
-                      <span class="summoner-tag" (click)="navigateToOPGG(p)">
-                        {{ p.summonerName }}#{{ p.summonerTag }}
-                      </span>
-                    </div>
-                  </td>
-
-                  <td class="tier-cell">
-                    <span class="tier-pill tier-{{ p.getQueue(queueType).tier | lowercase }}">
-                      {{ 'leagues.' + p.getQueue(queueType).tier | translate }} {{ p.getQueue(queueType).rank }}
-                    </span>
-                  </td>
-
-                  <td class="lp-cell">
-                    <span class="lp-pill">
-                      {{ p.getQueue(queueType).leaguePoints }} LP
-                    </span>
-                  </td>
-
-                  <td class="wl-cell">
-                    <span class="wins">{{ p.getQueue(queueType).wins }}W </span>
-                    <span class="slash">/</span>
-                    <span class="losses"> {{ p.getQueue(queueType).losses }}L</span>
-                  </td>
-
-                  <td class="champion-cell"></td>
-                </tr>
-              }
-            </tbody>
-
-          </table>
-        </div>
+        @for (player of players; track player.puuid; let i = $index) {
+          <app-player-card [player]="player" [rank]="i + 1"></app-player-card>
+        }
       </div>
     }
 
