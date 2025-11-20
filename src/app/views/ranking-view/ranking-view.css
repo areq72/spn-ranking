@@ -301,6 +301,6 @@ tbody.reordering .ranking-row {
 }
 
 .queue-pill--active {
-  background: var(--spn-red-40);
+  background: var(--spn-red-dark);
   color: #ffffff;
 }
