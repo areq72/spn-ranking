@@ -118,6 +118,7 @@ app-root {
 @media (max-width: 900px) {
   .tier-pill {
     font-size: 10px;
+    padding: 4px 11px;
   }
 }
 
