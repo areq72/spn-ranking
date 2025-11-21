@@ -67,127 +67,7 @@
   gap: 16px;
 }
 
-/* TABLE */
 
-.table-wrapper {
-  overflow-x: auto;
-}
-
-.ranking-table {
-  width: 100%;
-  color: #f1f1f1;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
-/* Fondo del header */
-.ranking-table thead tr {
-  background: linear-gradient(90deg, var(--spn-red-dark), var(--spn-red));
-}
-
-/* Redondear esquinas del header */
-.ranking-table thead th:first-child {
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px; /* quítalo si solo quieres la esquina de arriba */
-}
-
-.ranking-table thead th:last-child {
-  min-width: 110px;
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px; /* idem */
-}
-
-.ranking-table th,
-.ranking-table tr {
-  padding: 12px 16px;
-  font-size: 0.95rem;
-}
-
-.ranking-table th {
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-
-.ranking-table tbody tr {
-  transition: background 0.16s ease, transform 0.12s ease;
-}
-
-.ranking-table td {
-  text-align: center;
-  vertical-align: middle;
-}
-
-.ranking-row {
-  position: relative;
-  overflow: hidden;
-  border-radius: 999px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-  background-color: #252525;
-
-  background-image:
-    linear-gradient(
-      to left,
-      rgba(37, 37, 37, 0.3) 120px,
-      rgba(37, 37, 37, 0.5) 145px,
-      rgba(37, 37, 37, 0.6) 155px,
-      rgba(37, 37, 37, 0.7) 165px,
-      rgba(37, 37, 37, 0.8) 175px,
-      rgba(37, 37, 37, 0.9) 185px,
-      rgba(37, 37, 37, 1) 200px
-    ),
-    var(--splash-url);
-  background-repeat: no-repeat, no-repeat;
-  background-position: right top, right top;
-  background-size: 260px auto, 260px auto;
-}
-
-.ranking-table tbody td {
-  background: transparent;
-}
-
-.ranking-table tbody tr:hover {
-  transform: translateY(-1px);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-.ranking-table {
-  border-collapse: separate;
-  border-spacing: 0 6px;
-}
-
-.ranking-table tbody td {
-  z-index: 0;
-}
-
-.ranking-table tbody td:first-child {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-.ranking-table tbody td:last-child {
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-@keyframes rowFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(-1px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Cuando el tbody tiene la clase .reordering, animamos todas las filas */
-tbody.reordering .ranking-row {
-  animation-name: rowFadeUp;
-  animation-duration: 250ms;
-  animation-timing-function: ease-out;
-  animation-fill-mode: both;
-  animation-delay: calc(var(--row-index) * 25ms);
-}
 
 /* RANK PILL */
 
@@ -293,7 +173,7 @@ tbody.reordering .ranking-row {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+  transition: background 0.15s ease, transform 0.3s ease, box-shadow 0.1s ease;
 }
 
 .queue-pill:hover {

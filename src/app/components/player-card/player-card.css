@@ -9,11 +9,11 @@
   background: var(--spn-gray);
   color: #fff;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.12s ease;
 }
 
 .player-card:hover {
   transform: translateY(-2px);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 /* TOP */
@@ -71,11 +71,14 @@
 .player-card__tagline {
   font-size: 20px;
   font-weight: 500;
-  color: #f0c45a;
+  color: var(--spn-gold-light);
+  transition: color 0.15s ease;
 }
 
 .player-card__tagline:hover {
-  text-decoration: underline;
+  color: var(--spn-gold);
+  transition: color 0.15s ease;
+  cursor: pointer;
 }
 
 /* Avatar */
