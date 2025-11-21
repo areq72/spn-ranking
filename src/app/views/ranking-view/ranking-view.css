@@ -60,9 +60,9 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  background: var(--spn-black-soft);
+  background: var(--spn-black-soft-70);
   border-radius: 18px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid var(--spn-gold-30);
   padding: 16px;
   gap: 16px;
 }

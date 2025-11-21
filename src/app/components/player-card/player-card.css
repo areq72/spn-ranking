@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 0;
   border-radius: 40px;
+  border: 1px solid var(--spn-gold-30);
   background: var(--spn-gray);
   color: #fff;
   overflow: hidden;
@@ -40,7 +41,7 @@
   font-size: 28px;
   font-weight: bold;
   font-style: italic;
-  color: #000000;
+  color: var(--spn-gray);
   justify-content: center;
   background-image: url(../../../assets/rank-ball.svg);
   background-repeat: no-repeat;

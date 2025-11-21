@@ -21,6 +21,8 @@
 
   --spn-gold: #d4af37;
   --spn-gold-dark: #a67c00;
+
+  --spn-gold-30: rgba(212, 175, 55, 0.3);
 }
 
 :host {
