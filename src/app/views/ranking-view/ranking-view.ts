@@ -1,9 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Player } from '../../models/player.model';
 import { PlayerService } from '../../services/player.service';
 import { TranslatePipe } from '@ngx-translate/core';
-import { environment } from '../../../environments/environment';
-import { catchError, finalize } from 'rxjs';
+import { catchError, finalize, of } from 'rxjs';
 import { QueueType } from '../../constants/constants';
 import { compareElo } from '../../utils/tier-utils';
 import { PlayerCard } from '../../components/player-card/player-card';
@@ -14,53 +13,53 @@ import { PlayerCard } from '../../components/player-card/player-card';
   templateUrl: './ranking-view.html',
   styleUrl: './ranking-view.css',
 })
-export class RankingView implements OnInit {
-  protected readonly environment = environment;
-
+export class RankingView {
   private playerService = inject(PlayerService);
 
-  players: Player[] = [];
-  loadingPlayers = false;
-  isReordering = false;
-  queueType: QueueType = 'soloQ';
+  players = signal<Player[]>([]);
+  loadingPlayers = signal(false);
+  isReordering = signal(false);
+  queueType = signal<QueueType>('soloQ');
 
-  ngOnInit() {
+  sortedPlayers = computed(() =>
+    [...this.players()].sort((a, b) => compareElo(a, b, this.queueType())),
+  );
+
+  constructor() {
     this.getPlayers();
   }
 
   switchQueue(queue: QueueType) {
-    this.queueType = queue;
-    this.sortPlayers();
+    if (this.queueType() === queue) return;
+    this.queueType.set(queue);
     this.playReorderAnimation();
   }
 
   private getPlayers() {
-    this.loadingPlayers = true;
+    this.loadingPlayers.set(true);
+
     this.playerService
       .getPlayers()
       .pipe(
-        finalize(() => (this.loadingPlayers = false)),
-        catchError(() => (this.players = [])),
+        catchError(() => {
+          this.players.set([]);
+          return of([]);
+        }),
+        finalize(() => this.loadingPlayers.set(false)),
       )
-      .subscribe({
-        next: (data) => {
-          this.players = data;
-        },
+      .subscribe((data) => {
+        this.players.set(data);
       });
   }
 
-  private sortPlayers() {
-    this.players.sort((a, b) => compareElo(a, b, this.queueType));
-  }
-
   private playReorderAnimation() {
-    this.isReordering = false;
+    this.isReordering.set(false);
 
     requestAnimationFrame(() => {
-      this.isReordering = true;
+      this.isReordering.set(true);
 
       setTimeout(() => {
-        this.isReordering = false;
+        this.isReordering.set(false);
       }, 300);
     });
   }

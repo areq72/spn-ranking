@@ -1,33 +1,33 @@
 <div class="page">
   <div class="container">
 
-    @if (loadingPlayers) {
+    @if (loadingPlayers()) {
       <div class="loading loading--center">
         <span class="spinner"></span>
         <span>{{ 'ranking.loading' | translate }}</span>
       </div>
     }
 
-    @if (!loadingPlayers) {
+    @if (!loadingPlayers()) {
       <div class="queue-switcher">
         <button
           class="queue-pill"
-          [class.queue-pill--active]="queueType === 'soloQ'"
+          [class.queue-pill--active]="queueType() === 'soloQ'"
           (click)="switchQueue('soloQ')">
           Solo/Duo
         </button>
 
         <button
           class="queue-pill"
-          [class.queue-pill--active]="queueType === 'flexQ'"
+          [class.queue-pill--active]="queueType() === 'flexQ'"
           (click)="switchQueue('flexQ')">
           Flex
         </button>
       </div>
 
-      <div class="card">
-        @for (player of players; track player.puuid; let i = $index) {
-          <app-player-card [player]="player" [rank]="i + 1"></app-player-card>
+      <div class="card" [class.card--reordering]="isReordering()">
+        @for (player of sortedPlayers(); track player.puuid; let i = $index) {
+          <app-player-card [player]="player" [queue]="queueType()" [rank]="i + 1"></app-player-card>
         }
       </div>
     }

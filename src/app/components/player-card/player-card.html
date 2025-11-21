@@ -1,14 +1,11 @@
 <div class="player-card">
-  <!-- Parte superior -->
   <div class="player-card__top">
     <div class="player-card__left">
 
-      <!-- Logo SPN -->
       <div class="player-rank">
         {{ rank() }}
       </div>
 
-      <!-- Datos del jugador -->
       <div class="player-card__identity">
 
         <div class="player-card__name-row">
@@ -24,7 +21,6 @@
       </div>
     </div>
 
-    <!-- Avatar -->
     <div class="player-card__avatar">
       <img
         [src]="'https://ddragon.leagueoflegends.com/cdn/' + environment.lolPatch + '/img/profileicon/' + player()?.profileInfo?.profileIconId + '.png'"
@@ -32,26 +28,24 @@
     </div>
   </div>
 
-  <!-- Línea dorada -->
   <div class="player-card__divider"></div>
 
-  <!-- Parte inferior -->
   <div [style.--splash-url]="splashUrl() ? 'url(' + splashUrl() + ')' : 'none'" class="player-card__bottom">
-    <!-- Badges -->
+
     <div class="player-card__badges">
 
       <div class="tier-pill tier-{{ player()?.getQueue(queue() ?? 'soloQ')?.tier | lowercase }}">
-        {{ 'leagues.' + player()?.soloQ?.tier | translate }} {{ player()?.soloQ?.rank }}
+        {{ 'leagues.' + player()?.getQueue(queue() ?? 'soloQ')?.tier | translate }} {{ player()?.getQueue(queue() ?? 'soloQ')?.rank }}
       </div>
 
       <div class="badge badge--lp">
-        {{ player()?.soloQ?.leaguePoints }} LP
+        {{ player()?.getQueue(queue() ?? 'soloQ')?.leaguePoints }} LP
       </div>
 
       <div class="badge badge--record">
-        <span class="record record--wins">{{ player()?.soloQ?.wins }}W</span>
+        <span class="record record--wins">{{ player()?.getQueue(queue() ?? 'soloQ')?.wins }}W</span>
         <span class="record__slash"> / </span>
-        <span class="record record--losses">{{ player()?.soloQ?.losses }}L</span>
+        <span class="record record--losses">{{ player()?.getQueue(queue() ?? 'soloQ')?.losses }}L</span>
       </div>
     </div>
   </div>
