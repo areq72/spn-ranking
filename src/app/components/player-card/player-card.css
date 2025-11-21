@@ -72,12 +72,12 @@
   font-size: 20px;
   font-weight: 500;
   color: var(--spn-gold-light);
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, transform 0.15s ease;
 }
 
 .player-card__tagline:hover {
-  color: var(--spn-gold);
-  transition: color 0.15s ease;
+  color: var(--spn-gold-dark);
+  transform: translateY(-1px);
   cursor: pointer;
 }
 
