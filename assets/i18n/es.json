@@ -29,6 +29,13 @@
     "II": "II",
     "III": "III",
     "IV": "IV"
+  },
+
+  "ribbon": {
+    "nextClashIn": "Siguiente clash en"
+  },
+
+  "emoji": {
+    "fire": "\uD83D\uDD25"
   }
 }
-
