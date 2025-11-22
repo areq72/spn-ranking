@@ -32,7 +32,8 @@
   },
 
   "ribbon": {
-    "nextClashIn": "Siguiente clash en"
+    "nextClashIn": "Siguiente clash en",
+    "clashInProgress": "Clash en curso"
   },
 
   "emoji": {
