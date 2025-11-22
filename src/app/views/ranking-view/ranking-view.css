@@ -165,8 +165,8 @@
 }
 
 .queue-pill {
-  border: 0;
-  background: var(--spn-black-soft);
+  border: 1px solid var(--spn-gold-30);
+  background: var(--spn-black-soft-70);
   color: var(--spn-gold);
   padding: 6px 16px;
   border-radius: 999px;
