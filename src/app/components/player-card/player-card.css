@@ -132,8 +132,6 @@
   gap: 12px;
 }
 
-/* Chips */
-
 .badge {
   padding: 8px 22px;
   border-radius: 999px;
@@ -143,6 +141,14 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+}
+
+.badge--positive {
+  background: #2fd066;
+}
+
+.badge--negative {
+  background: #e65050;
 }
 
 .badge--lp {
@@ -234,7 +240,7 @@
   }
 
   .player-card__badges {
+    max-width: 70%;
     gap: 6px;
   }
 }
-

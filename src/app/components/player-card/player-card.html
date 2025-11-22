@@ -33,7 +33,6 @@
   <div [style.--splash-url]="splashUrl() ? 'url(' + splashUrl() + ')' : 'none'" class="player-card__bottom">
 
     <div class="player-card__badges">
-
       <div class="tier-pill tier-{{ player()?.getQueue(queue() ?? 'soloQ')?.tier | lowercase }}">
         {{ 'leagues.' + player()?.getQueue(queue() ?? 'soloQ')?.tier | translate }} {{ player()?.getQueue(queue() ?? 'soloQ')?.rank }}
       </div>
@@ -41,6 +40,16 @@
       <div class="badge badge--lp">
         {{ player()?.getQueue(queue() ?? 'soloQ')?.leaguePoints }} LP
       </div>
+
+      @if (player()!.lpDiff[queue()!] > 0) {
+        <span class="badge badge--positive">
+          <div class="tendency"></div>{{ player()!.lpDiff[queue()!] }} LP
+        </span>
+      } @else if (player()!.lpDiff[queue()!] < 0) {
+        <span class="badge badge--negative">
+          <div class="tendency tendency--negative"></div>{{ player()!.lpDiff[queue()!] }} LP
+        </span>
+      }
 
       <div class="badge badge--record">
         <span class="record record--wins">{{ player()?.getQueue(queue() ?? 'soloQ')?.wins }}W</span>

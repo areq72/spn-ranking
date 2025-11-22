@@ -33,6 +33,8 @@ export class Player {
 
   lastUpdated!: string;
 
+  lpDiff!: { [key: string]: number }
+
   constructor(partial: Partial<Player>) {
     Object.assign(this, partial);
 
