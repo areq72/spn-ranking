@@ -49,7 +49,7 @@ export class TopBarMessage {
   private loadNextClash() {
     this.clashService.getNextClash().subscribe({
       next: (clash) => {
-        this.nextClash.set(new Date(clash.schedule[0]?.startTime));
+        this.nextClash.set(new Date(clash.schedule[0]?.registrationTime));
       },
       error: () => {
         this.nextClash.set(null);
