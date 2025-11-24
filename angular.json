@@ -30,8 +30,7 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "src/winter-styles.css"
+              "src/styles.css"
             ],
             "outputPath": "dist/spn-ranking"
           },
@@ -101,8 +100,7 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "src/winter-styles.css"
+              "src/styles.css"
             ]
           }
         },
