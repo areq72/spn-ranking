@@ -38,5 +38,10 @@
 
   "emoji": {
     "fire": "\uD83D\uDD25"
+  },
+
+  "themes": {
+    "default": "\u2B50",
+    "winter": "\u2744\uFE0F"
   }
 }

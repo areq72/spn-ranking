@@ -43,7 +43,7 @@
   font-style: italic;
   color: var(--spn-gray);
   justify-content: center;
-  background-image: url(../../../assets/rank-ball.svg);
+  background-image: var(--rank-ball);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -65,7 +65,7 @@
 
 .player-card__summoner-name {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .player-card__tagline {

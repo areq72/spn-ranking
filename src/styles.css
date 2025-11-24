@@ -24,7 +24,58 @@
   --spn-gold-dark: #a67c00;
 
   --spn-gold-30: rgba(212, 175, 55, 0.3);
+
+  --page-bg-img:
+    linear-gradient(
+      to bottom,
+      var(--spn-black-soft-10) 50%,
+      var(--spn-black-soft-20) 55%,
+      var(--spn-black-soft-30) 60%,
+      var(--spn-black-soft-40) 65%,
+      var(--spn-black-soft-90) 70%,
+      var(--spn-black-soft) 100%
+    ),
+    url(assets/noxus-page-bg.png);
+  --page-bg-size: cover;
+  --page-bg-position: center;
+
+  --rank-ball: url(assets/rank-ball.svg);
 }
+
+:root.winter-theme {
+  --spn-black: #0a0a0a;
+  --spn-black-soft: #1c1c1c;
+  --spn-gray: #252525;
+
+  --spn-black-soft-10: rgb(28, 28, 28, 0.1);
+  --spn-black-soft-20: rgb(28, 28, 28, 0.2);
+  --spn-black-soft-30: rgb(28, 28, 28, 0.3);
+  --spn-black-soft-40: rgb(28, 28, 28, 0.4);
+  --spn-black-soft-50: rgb(28, 28, 28, 0.5);
+  --spn-black-soft-60: rgb(28, 28, 28, 0.6);
+  --spn-black-soft-70: rgb(28, 28, 28, 0.7);
+  --spn-black-soft-80: rgb(28, 28, 28, 0.8);
+  --spn-black-soft-90: rgb(28, 28, 28, 0.9);
+
+  --page-bg-img: url(assets/winter-page-bg.jpg);
+  --page-bg-size: cover;
+  --page-bg-position: 40% top;
+
+  --spn-red: #59ADC1;
+  --spn-red-dark: #4e96a5;
+  --spn-red-darker: #3f7a87;
+
+  --spn-red-40: rgba(89, 173, 193, 0.4);
+
+  --spn-gold-light: #F1D491FF;
+  --spn-gold: #ac925d;
+  --spn-gold-dark: #917c4d;
+
+  --spn-gold-30: rgba(172, 146, 93, 0.3);
+
+  --rank-ball: url(assets/rank-ball-winter.svg);
+}
+
 
 :host {
   display: block;
@@ -125,20 +176,10 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image:
-    linear-gradient(
-      to bottom,
-      var(--spn-black-soft-10) 50%,
-      var(--spn-black-soft-20) 55%,
-      var(--spn-black-soft-30) 60%,
-      var(--spn-black-soft-40) 65%,
-      var(--spn-black-soft-90) 70%,
-      var(--spn-black-soft) 100%
-    ),
-    url(assets/noxus-page-bg.png);
+  background-image: var(--page-bg-img);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-size: var(--page-bg-size);
+  background-position: var(--page-bg-position);
   z-index: -1;
 }
 

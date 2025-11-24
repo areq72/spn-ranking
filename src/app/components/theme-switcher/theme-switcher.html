@@ -1,0 +1,13 @@
+<label class="switch">
+  <input
+    type="checkbox"
+    [checked]="isWinter()"
+    (change)="onToggle($any($event.target).checked)"
+  />
+  <span class="slider">
+    <span class="star star_1"></span>
+    <span class="star star_2"></span>
+    <span class="star star_3"></span>
+    <span class="cloud"></span>
+  </span>
+</label>

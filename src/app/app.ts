@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TopBarMessage } from './components/top-bar-message/top-bar-message';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,12 @@ import { TopBarMessage } from './components/top-bar-message/top-bar-message';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
-  protected readonly title = signal('spn-ranking');
+export class App implements OnInit {
+  themeService = inject(ThemeService);
+
+  logo = signal<string>('spn-logo-winter.svg');
+
+  ngOnInit(): void {
+    this.themeService.setTheme('winter');
+  }
 }

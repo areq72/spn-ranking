@@ -10,6 +10,10 @@
   justify-content: center;
 }
 
+.logo {
+  height: 276px;
+}
+
 @media (max-width: 900px) {
   .logo {
     height: 190px;
