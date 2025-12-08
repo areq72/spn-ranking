@@ -23,6 +23,8 @@
   --spn-gold: #d4af37;
   --spn-gold-dark: #a67c00;
 
+  --spn-top-bar-color: linear-gradient(90deg, #cfa243, #f05545);
+
   --spn-gold-30: rgba(212, 175, 55, 0.3);
 
   --page-bg-img:
@@ -70,6 +72,8 @@
   --spn-gold-light: #F1D491FF;
   --spn-gold: #ac925d;
   --spn-gold-dark: #917c4d;
+
+  --spn-top-bar-color: linear-gradient(90deg, #59ADC1, #3f7a87);
 
   --spn-gold-30: rgba(172, 146, 93, 0.3);
 
