@@ -1,11 +1,12 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Player } from '../../models/player.model';
-import { PlayerService } from '../../services/player.service';
+import { LeagueService } from '../../services/league.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { catchError, finalize, of } from 'rxjs';
 import { QueueType } from '../../constants/constants';
 import { compareElo } from '../../utils/tier-utils';
 import { PlayerCard } from '../../components/player-card/player-card';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ranking-view',
@@ -14,7 +15,8 @@ import { PlayerCard } from '../../components/player-card/player-card';
   styleUrl: './ranking-view.css',
 })
 export class RankingView {
-  private playerService = inject(PlayerService);
+  private leagueService = inject(LeagueService);
+  private router = inject(Router);
 
   players = signal<Player[]>([]);
   loadingPlayers = signal(false);
@@ -35,10 +37,14 @@ export class RankingView {
     this.playReorderAnimation();
   }
 
+  navigateToDetail(player: Player) {
+    this.router.navigate(['player', player.puuid]).then();
+  }
+
   private getPlayers() {
     this.loadingPlayers.set(true);
 
-    this.playerService
+    this.leagueService
       .getPlayers()
       .pipe(
         catchError(() => {

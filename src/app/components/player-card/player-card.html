@@ -13,7 +13,7 @@
             {{ player()?.name }}
           </span>
 
-          <span class="player-card__tagline" (click)="player()?.navigateToOPGG()">
+          <span class="player-card__tagline" (click)="$event.stopPropagation(); player()?.navigateToOPGG()">
             {{ player()?.summonerName }}#{{ player()?.summonerTag }}
           </span>
         </div>

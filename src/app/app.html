@@ -1,7 +1,9 @@
 <div class="page">
   <app-top-bar-message></app-top-bar-message>
-  <div class="logo-container">
-    <img class="logo" [src]="logo()" alt="SPN Logo">
-  </div>
+  @if (showLogo()) {
+    <div class="logo-container">
+      <img class="logo" [src]="logo()" alt="SPN Logo">
+    </div>
+  }
   <router-outlet></router-outlet>
 </div>

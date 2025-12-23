@@ -27,7 +27,7 @@
 
       <div class="card" [class.card--reordering]="isReordering()">
         @for (player of sortedPlayers(); track player.puuid; let i = $index) {
-          <app-player-card [player]="player" [queue]="queueType()" [rank]="i + 1"></app-player-card>
+          <app-player-card (click)="navigateToDetail(player)" [player]="player" [queue]="queueType()" [rank]="i + 1"></app-player-card>
         }
       </div>
     }
