@@ -1,0 +1,82 @@
+.player-header {
+  min-height: 200px;
+  width: calc(100vw - 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--spn-black-soft-70);
+  margin: 20px;
+  border: 1px solid var(--spn-gold-30);
+  border-radius: 18px;
+}
+
+.player-row {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+}
+
+.player-icon {
+  border-radius: 999px;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.player-rank {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -11px;
+  position: relative;
+  background: var(--spn-black-soft);
+  text-align: center;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 11px;
+}
+
+.player-name {
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.summoner-row {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--spn-gold-light);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+
+@media (max-width: 900px) {
+  .player-header {
+    min-height: 150px;
+  }
+
+  .player-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .player-rank {
+    font-size: 12px;
+    padding: 4px;
+    margin-top: -8px;
+  }
+
+  .player-name {
+    font-size: 20px;
+  }
+
+  .summoner-row {
+    font-size: 16px;
+  }
+}

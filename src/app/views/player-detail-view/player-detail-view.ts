@@ -3,6 +3,7 @@ import {PlayerService} from '../../services/player.service';
 import {ActivatedRoute} from '@angular/router';
 import {distinctUntilChanged, filter, map, switchMap} from 'rxjs';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-player-detail-view',
@@ -26,4 +27,5 @@ export class PlayerDetailView {
     ),
     { initialValue: null },
   );
+  protected readonly environment = environment;
 }

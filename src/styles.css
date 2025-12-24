@@ -200,6 +200,12 @@ body::before {
   transform-origin: center;
 }
 
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
 @media (max-width: 900px) {
   .tier-pill {
     font-size: 10px;
