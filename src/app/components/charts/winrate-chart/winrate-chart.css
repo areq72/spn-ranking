@@ -1,0 +1,12 @@
+.demo-chart {
+  width: 300px;
+  height: 350px;
+}
+
+@media (max-width: 900px) {
+  .demo-chart {
+    width: 250px;
+    height: 300px;
+  }
+}
+
