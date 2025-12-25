@@ -1,12 +1,14 @@
-import { Component, computed, inject, input, Renderer2, Signal } from '@angular/core';
+import { Component, computed, inject, input, Signal } from '@angular/core';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { TranslateService } from '@ngx-translate/core';
 import { EChartsCoreOption } from 'echarts';
 import { ThemeService } from '../../../services/theme.service';
+import { QueueType } from '../../../constants/constants';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-winrate-chart',
-  imports: [NgxEchartsDirective],
+  imports: [NgxEchartsDirective, DecimalPipe],
   templateUrl: './winrate-chart.html',
   styleUrl: './winrate-chart.css',
 })
@@ -14,8 +16,13 @@ export class WinrateChart {
   private readonly translate = inject(TranslateService);
   private readonly themeService = inject(ThemeService);
 
-  wins = input<number>();
-  losses = input<number>();
+  wins = input<number>(0);
+  losses = input<number>(0);
+  queueType = input<QueueType>();
+
+  winrate = computed(() => {
+    return (this.wins() / (this.wins() + this.losses())) * 100;
+  });
 
   chartOptions: Signal<EChartsCoreOption> = computed(() => ({
     tooltip: {
@@ -30,6 +37,7 @@ export class WinrateChart {
       left: 'center',
       textStyle: {
         color: this.themeService.chartStyles()?.textColor,
+        fontSize: '14px',
       },
     },
     series: [
@@ -43,8 +51,16 @@ export class WinrateChart {
           borderWidth: this.themeService.chartStyles()?.borderWidth,
         },
         label: {
-          show: false,
+          show: true,
           position: 'center',
+          formatter: this.translate.instant(`queues.${this.queueType()}`),
+          color: this.themeService.chartStyles()?.textColor,
+          fontSize: '20px',
+        },
+        emphasis: {
+          label: {
+            show: true,
+          },
         },
         labelLine: {
           show: false,

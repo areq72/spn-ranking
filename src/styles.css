@@ -1,3 +1,6 @@
+@import "swiper/css";
+@import "swiper/css/pagination";
+
 :root {
   --spn-black: #0a0a0a;
   --spn-black-soft: #1c1c1c;

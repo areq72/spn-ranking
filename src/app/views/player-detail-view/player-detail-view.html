@@ -22,13 +22,26 @@
       </div>
     </div>
   </div>
+
   <div class="player-body">
-    <div class="container">
+    <div class="swiper-container">
       <div class="chart-container">
-        <app-winrate-chart
-          [wins]="playerRs.value()?.soloQ?.wins"
-          [losses]="playerRs.value()?.soloQ?.losses">
-        </app-winrate-chart>
+        <swiper-container
+          class="charts-swiper"
+          slides-per-view="1"
+          space-between="16"
+          loop="true"
+        >
+          @for (queue of queueTypes; track queue) {
+            <swiper-slide class="charts-slide">
+              <app-winrate-chart
+                [queueType]="'soloQ'"
+                [wins]="playerRs.value()?.getQueue(queue)?.wins ?? 0"
+                [losses]="playerRs.value()?.getQueue(queue)?.losses ?? 0">
+              </app-winrate-chart>
+            </swiper-slide>
+          }
+        </swiper-container>
       </div>
     </div>
   </div>

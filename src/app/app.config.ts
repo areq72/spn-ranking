@@ -10,7 +10,10 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideEchartsCore } from 'ngx-echarts';
 import { echarts } from './config/echarts';
+import { register as registerSwiperElements } from 'swiper/element';
 
+
+registerSwiperElements();
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
