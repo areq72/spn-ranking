@@ -1,5 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { AppTheme } from '../constants/constants';
+import { defaultChartStyles, winterChartStyles } from '../models/chart-styles.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,4 +23,13 @@ export class ThemeService {
       root.classList.add(`${theme}-theme`);
     }
   }
+
+  chartStyles = computed(() => {
+    switch (this.currentTheme()) {
+      case 'winter':
+        return winterChartStyles;
+      default:
+        return defaultChartStyles;
+    }
+  })
 }

@@ -1,10 +1,11 @@
 import { Component, inject, input } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
 import { environment } from '../../../environments/environment';
+import { WinrateChart } from '../../components/charts/winrate-chart/winrate-chart';
 
 @Component({
   selector: 'app-player-detail-view',
-  imports: [],
+  imports: [WinrateChart],
   templateUrl: './player-detail-view.html',
   styleUrl: './player-detail-view.css',
 })

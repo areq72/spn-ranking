@@ -200,6 +200,10 @@ body::before {
   transform-origin: center;
 }
 
+.chart-tooltip, chart-tooltip-winter {
+  background: var(--spn-black-soft);
+}
+
 .container {
   width: 100%;
   max-width: 900px;

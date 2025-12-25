@@ -1,4 +1,4 @@
-@if (playerRs.value()) {
+@if (playerRs.value() && !playerRs.isLoading()) {
   <div class="player-header">
     <div class="container">
       <div class="player-row">
@@ -19,6 +19,16 @@
             <span class="summoner-tag">#{{ playerRs.value()?.summonerTag }}</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="player-body">
+    <div class="container">
+      <div class="chart-container">
+        <app-winrate-chart
+          [wins]="playerRs.value()?.soloQ?.wins"
+          [losses]="playerRs.value()?.soloQ?.losses">
+        </app-winrate-chart>
       </div>
     </div>
   </div>

@@ -30,6 +30,7 @@
     "III": "III",
     "IV": "IV"
   },
+
   "queues": {
     "soloQ": "Solo/Duo",
     "flexQ": "Flex"
@@ -47,5 +48,10 @@
   "themes": {
     "default": "\u2B50",
     "winter": "\u2744\uFE0F"
+  },
+
+  "common": {
+    "wins": "Victorias",
+    "losses": "Derrotas"
   }
 }

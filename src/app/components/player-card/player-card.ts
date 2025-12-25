@@ -1,10 +1,10 @@
-import { Component, computed, inject, input, Input, signal } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Player } from '../../models/player.model';
 import { ChampionsService } from '../../services/champion.service';
 import { environment } from '../../../environments/environment';
 import { QueueType } from '../../constants/constants';
 import { LowerCasePipe } from '@angular/common';
-import { TranslatePipe } from "@ngx-translate/core";
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-player-card',

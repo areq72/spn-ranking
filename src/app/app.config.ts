@@ -8,6 +8,8 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideEchartsCore } from 'ngx-echarts';
+import { echarts } from './config/echarts';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +24,9 @@ export const appConfig: ApplicationConfig = {
       }),
       fallbackLang: 'es',
       lang: 'es',
+    }),
+    provideEchartsCore({
+      echarts
     }),
   ],
 };

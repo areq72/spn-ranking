@@ -55,6 +55,20 @@
   transition: color 0.15s ease, transform 0.15s ease;
 }
 
+.player-body {
+  display: flex;
+  justify-content: center;
+}
+
+.chart-container {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  background: var(--spn-black-soft-70);
+  border: 1px solid var(--spn-gold-30);
+  border-radius: 18px;
+}
 
 @media (max-width: 900px) {
   .player-header {
@@ -78,5 +92,9 @@
 
   .summoner-row {
     font-size: 16px;
+  }
+
+  .chart-container {
+    width: 100%;
   }
 }
