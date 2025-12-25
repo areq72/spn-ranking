@@ -31,6 +31,11 @@
     "IV": "IV"
   },
 
+  "queues": {
+    "soloQ": "Solo/Duo",
+    "flexQ": "Flex"
+  },
+
   "ribbon": {
     "nextClashIn": "Siguiente clash en",
     "clashInProgress": "Clash en curso"
@@ -43,5 +48,10 @@
   "themes": {
     "default": "\u2B50",
     "winter": "\u2744\uFE0F"
+  },
+
+  "common": {
+    "wins": "Victorias",
+    "losses": "Derrotas"
   }
 }
