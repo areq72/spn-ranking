@@ -35,7 +35,7 @@
           @for (queue of queueTypes; track queue) {
             <swiper-slide class="charts-slide">
               <app-winrate-chart
-                [queueType]="'soloQ'"
+                [queueType]="queue"
                 [wins]="playerRs.value()?.getQueue(queue)?.wins ?? 0"
                 [losses]="playerRs.value()?.getQueue(queue)?.losses ?? 0">
               </app-winrate-chart>
