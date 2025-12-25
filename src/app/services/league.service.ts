@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient, httpResource } from '@angular/common/http';
 import {Player} from '../models/player.model';
 import { environment } from '../../environments/environment';
 import {map} from 'rxjs';
@@ -15,5 +15,11 @@ export class LeagueService {
     return this.http.get<Player[]>(`${this.baseUrl}/players`).pipe(
       map(players => players.map(player => new Player(player)))
     );
+  }
+
+  getPlayersRs() {
+    return httpResource<Player[]>(() => ({
+      url: `${this.baseUrl}/players`
+    }));
   }
 }

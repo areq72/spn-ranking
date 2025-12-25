@@ -30,6 +30,10 @@
     "III": "III",
     "IV": "IV"
   },
+  "queues": {
+    "soloQ": "Solo/Duo",
+    "flexQ": "Flex"
+  },
 
   "ribbon": {
     "nextClashIn": "Siguiente clash en",

@@ -1,9 +1,6 @@
-import {Component, inject} from '@angular/core';
-import {PlayerService} from '../../services/player.service';
-import {ActivatedRoute} from '@angular/router';
-import {distinctUntilChanged, filter, map, switchMap} from 'rxjs';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {environment} from '../../../environments/environment';
+import { Component, inject, input } from '@angular/core';
+import { PlayerService } from '../../services/player.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-player-detail-view',
@@ -13,19 +10,9 @@ import {environment} from '../../../environments/environment';
 })
 export class PlayerDetailView {
   private readonly playerService = inject(PlayerService);
-  private readonly activatedRoute = inject(ActivatedRoute);
+  readonly environment = environment;
 
-  private readonly puuid$ = this.activatedRoute.paramMap.pipe(
-    map((p) => p.get('puuid')),
-    filter((v): v is string => v !== null && v.trim().length > 0),
-    distinctUntilChanged(),
-  );
+  puuid = input.required<string>();
 
-  player = toSignal(
-    this.puuid$.pipe(
-      switchMap((id) => this.playerService.getPlayerByPuuid(id)),
-    ),
-    { initialValue: null },
-  );
-  protected readonly environment = environment;
+  playerRs = this.playerService.getPlayerByUuidRs(this.puuid);
 }

@@ -12,7 +12,12 @@ export class TopBarMessage {
   private clashService = inject(ClashService);
   private translate = inject(TranslateService);
 
-  nextClash = signal<Date | null>(null);
+  nextClashRs = this.clashService.getNextClashRs();
+
+  nextClash = computed(() => {
+    const raw = this.nextClashRs.value()?.schedule[0]?.registrationTime;
+    return !raw ? null : new Date(raw);
+  });
 
   now = signal(Date.now());
 
@@ -30,7 +35,7 @@ export class TopBarMessage {
 
     const diff = target.getTime() - this.now();
 
-    if (diff <= 0) return this.translate.instant('');
+    if (diff <= 0) return this.translate.instant('ribbon.clashInProgress');
 
     const totalSeconds = Math.floor(diff / 1000);
 
@@ -41,6 +46,7 @@ export class TopBarMessage {
 
 
     return (
+      `${this.translate.instant('ribbon.nextClashIn')} ` +
       `${days ? `${days.toString()}d ` : ''}` +
       `${hours.toString().padStart(2, '0')}h ` +
       `${minutes.toString().padStart(2, '0')}m ` +
@@ -48,24 +54,4 @@ export class TopBarMessage {
     );
   });
 
-  constructor() {
-    this.loadNextClash();
-  }
-
-  private loadNextClash() {
-    this.clashService.getNextClash().subscribe({
-      next: (clash) => {
-        const raw = clash.schedule[0]?.registrationTime;
-        if (!raw) {
-          this.nextClash.set(null);
-          return;
-        }
-
-        this.nextClash.set(new Date(raw));
-      },
-      error: () => {
-        this.nextClash.set(null);
-      },
-    });
-  }
 }
