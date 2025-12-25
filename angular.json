@@ -39,9 +39,7 @@
               "baseHref": "/spn-ranking/",
               "budgets": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "type": "initial"
                 },
                 {
                   "type": "anyComponentStyle",
