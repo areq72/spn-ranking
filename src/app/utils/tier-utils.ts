@@ -1,4 +1,4 @@
-import {Player} from '../models/player.model';
+import {Player, QueueInfo } from '../models/player.model';
 import {QueueType} from '../constants/constants';
 
 
@@ -48,4 +48,44 @@ export function compareElo(a: Player, b: Player, queue: QueueType): number {
   const lpB = qb.leaguePoints ?? 0;
 
   return lpB - lpA;
+}
+
+const ORDER_TO_TIER = Object.entries(TIER_ORDER).reduce<Record<number, string>>((acc, [k, v]) => {
+  acc[v] = k;
+  return acc;
+}, {});
+
+const ORDER_TO_DIVISION = Object.entries(DIVISION_ORDER).reduce<Record<number, string>>(
+  (acc, [k, v]) => {
+    acc[v] = k;
+    return acc;
+  },
+  {},
+);
+
+export function getQueueScore(queue?: QueueInfo | null): number {
+  if (!queue) return 0;
+
+  const tierScore = (TIER_ORDER[queue.tier] ?? -999) * 400;
+  const divisionScore = (DIVISION_ORDER[queue.rank] ?? 0) * 100;
+  const lp = queue.leaguePoints ?? 0;
+
+  return tierScore + divisionScore + lp;
+}
+
+export function scoreToRank(score: number): { tier: string; rank: string; lp: number } {
+  const tierIdx = Math.floor(score / 400);
+  const remTier = score - tierIdx * 400;
+
+  const divIdx = Math.floor(remTier / 100);
+  const lp = remTier - divIdx * 100;
+
+  const tier = ORDER_TO_TIER[tierIdx] ?? 'UNKNOWN';
+  const rank = ORDER_TO_DIVISION[divIdx] ?? 'UNKNOWN';
+
+  return { tier, rank, lp: Math.max(0, Math.min(99, Math.round(lp))) };
+}
+
+export function formatRankLabel(tier: string, rank: string): string {
+  return `${tier} ${rank}`;
 }

@@ -6,6 +6,7 @@ export interface QueueInfo {
   leaguePoints: number;
   wins: number;
   losses: number;
+  total: number;
 }
 
 export interface ProfileInfo {

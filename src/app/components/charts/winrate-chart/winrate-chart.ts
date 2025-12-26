@@ -35,6 +35,7 @@ export class WinrateChart {
     legend: {
       top: '5%',
       left: 'center',
+      icon: 'circle',
       textStyle: {
         color: this.themeService.chartStyles()?.textColor,
         fontSize: '14px',
@@ -45,6 +46,7 @@ export class WinrateChart {
         type: 'pie',
         radius: ['40%', '70%'],
         avoidLabelOverlap: false,
+        padAngle: 5,
         itemStyle: {
           borderRadius: this.themeService.chartStyles()?.borderRadius,
           borderColor: this.themeService.chartStyles()?.borderColor,

@@ -45,4 +45,14 @@
       </div>
     </div>
   </div>
+
+  <div class="player-body">
+    <div class="container">
+      <div class="chart-container">
+        <app-rank-history-chart
+          [rankHistory]="playerRs.value()?.history ?? []">
+        </app-rank-history-chart>
+      </div>
+    </div>
+  </div>
 }
