@@ -16,6 +16,6 @@ export class ChampionMasteryCard {
   splashUrl = computed(() => {
     const championId = this.mastery()?.championId;
     if (!championId) return '';
-    return this.champService.getChampionSplashById(championId);
+    return this.champService.getChampionLoadingScreenById(championId);
   });
 }

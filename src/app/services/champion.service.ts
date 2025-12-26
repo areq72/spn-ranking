@@ -26,4 +26,11 @@ export class ChampionsService {
     const name = this.getChampionNameById(championId);
     return name ? `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${name}_0.jpg` : '';
   }
+
+  getChampionLoadingScreenById(championId: number): string {
+    const name = this.getChampionNameById(championId);
+    return name
+      ? `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_0.jpg`
+      : '';
+  }
 }
