@@ -17,11 +17,28 @@
   align-items: center;
 }
 
+.icon-container {
+  position: relative;
+  width: 140px;
+}
+
+.player-border {
+  width: 140px;
+  height: 140px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .player-icon {
+  width: 60px;
+  height: 60px;
   border-radius: 999px;
-  width: 120px;
-  height: 120px;
   overflow: hidden;
+  background: var(--spn-black-soft);
   flex-shrink: 0;
 
   img {
@@ -32,15 +49,15 @@
 }
 
 .player-rank {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -11px;
-  position: relative;
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--spn-black-soft);
   text-align: center;
-  width: fit-content;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 11px;
+  font-size: 0.85rem;
 }
 
 .player-name {
@@ -59,7 +76,8 @@
   display: flex;
   justify-self: center;
   flex-direction: row;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
   justify-content: center;
   margin-bottom: 20px;
   max-width: 900px;
@@ -102,14 +120,30 @@ swiper-slide.charts-slide {
   width: 400px  ;
 }
 
+.masteries-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 @media (max-width: 900px) {
   .player-header {
     min-height: 150px;
   }
 
+  .icon-container {
+    width: 100px;
+  }
+
+  .player-border {
+    width: 100px;
+    height: 100px;
+  }
+
   .player-icon {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
   }
 
   .player-rank {
@@ -145,5 +179,9 @@ swiper-slide.charts-slide {
     width: calc(100vw - 40px);
     justify-self: center;
     margin: 0 20px;
+  }
+
+  .masteries-container {
+    padding: 0 20px;
   }
 }

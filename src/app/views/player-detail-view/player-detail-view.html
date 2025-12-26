@@ -3,15 +3,21 @@
     <div class="container">
       <div class="player-row">
         <div class="icon-container">
-          <div class="player-icon">
-            <img
-              [src]="'https://ddragon.leagueoflegends.com/cdn/' + environment.lolPatch + '/img/profileicon/' + playerRs.value()?.profileInfo?.profileIconId + '.png'"
-              alt="Summoner icon" />
+          <div
+            class="player-border"
+            [style.background-image]="'url(' + borderUrl() + ')'">
+            <div class="player-icon">
+              <img
+                [src]="'https://ddragon.leagueoflegends.com/cdn/' + environment.lolPatch + '/img/profileicon/' + playerRs.value()?.profileInfo?.profileIconId + '.png'"
+                alt="Summoner icon" />
+            </div>
           </div>
+
           <div class="player-rank">
             {{ playerRs.value()?.profileInfo?.summonerLevel }}
           </div>
         </div>
+
         <div class="player-identity">
           <div class="player-name">{{ playerRs.value()?.name }}</div>
           <div class="summoner-row" (click)="playerRs.value()?.navigateToOPGG()">
@@ -24,7 +30,7 @@
   </div>
 
   <div class="player-body">
-    <div class="swiper-container">
+    <section class="swiper-container">
       <div class="chart-container small-chart">
         <swiper-container
           class="charts-swiper"
@@ -43,12 +49,18 @@
           }
         </swiper-container>
       </div>
-    </div>
+    </section>
 
-    <div class="chart-container history-chart-container">
+    <section class="chart-container history-chart-container">
       <app-rank-history-chart
         [rankHistory]="playerRs.value()?.history ?? []">
       </app-rank-history-chart>
-    </div>
+    </section>
+
+    <section class="masteries-container">
+      @for (mastery of playerRs.value()?.masteries; track mastery.championId) {
+        <app-champion-mastery-card [mastery]="mastery"></app-champion-mastery-card>
+      }
+    </section>
   </div>
 }

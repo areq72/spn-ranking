@@ -1,0 +1,38 @@
+.mastery-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 18px;
+  border: 1px solid var(--spn-gold-30);
+  background: var(--spn-gray);
+  color: #fff;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.12s ease;
+}
+
+.bg-img-card {
+  display: flex;
+  padding: 10px 28px;
+  align-items: center;
+  gap: 20px;
+  min-height: 110px;
+  background-image:
+    linear-gradient(
+      to left,
+      rgba(37, 37, 37, 0) 0%,
+      rgba(37, 37, 37, 0.9) 84%,
+      rgba(37, 37, 37, 1) 100%
+    ),
+    var(--splash-url);
+  background-repeat: no-repeat, no-repeat;
+  background-position: right top, right top;
+  background-size: 400px auto, 400px auto;
+}
+
+@media (max-width: 900px) {
+  .bg-img-card {
+    padding: 5px 14px;
+    min-height: 55px;
+    background-size: 250px auto, 250px auto;
+  }
+}
