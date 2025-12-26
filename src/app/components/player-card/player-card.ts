@@ -5,10 +5,11 @@ import { environment } from '../../../environments/environment';
 import { QueueType } from '../../constants/constants';
 import { LowerCasePipe } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
+import { SummonerIcon } from '../summoner-icon/summoner-icon';
 
 @Component({
   selector: 'app-player-card',
-  imports: [LowerCasePipe, TranslatePipe],
+  imports: [LowerCasePipe, TranslatePipe, SummonerIcon],
   templateUrl: './player-card.html',
   styleUrl: './player-card.css',
 })

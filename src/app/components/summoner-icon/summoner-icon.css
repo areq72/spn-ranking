@@ -1,0 +1,129 @@
+
+.icon-container {
+  position: relative;
+  width: 140px;
+}
+
+.player-border {
+  width: 140px;
+  height: 140px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--spn-black-soft);
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.small-icon {
+  height: 80px;
+  width: 80px;
+
+  .player-frame {
+    height: 80px;
+    width: 80px;
+  }
+
+  .player-icon-bg {
+    background-size: 45px;
+  }
+}
+
+.player-rank {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--spn-black-soft);
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 11px;
+  font-size: 0.85rem;
+}
+
+.player-frame {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.player-icon-bg {
+  position: absolute;
+  inset: 0;
+
+  background-size: 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  -webkit-mask-image: radial-gradient(circle at center, #000 28%, transparent 36%);
+  mask-image: radial-gradient(circle at center, #000 40%, transparent 36%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.player-border {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  transform: scale(1.3);
+}
+
+@media (max-width: 900px) {
+  .icon-container {
+    width: 100px;
+  }
+
+  .player-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .player-frame {
+    width: 100px;
+    height: 100px;
+  }
+
+  .player-icon-bg {
+    background-size: 60px;
+  }
+
+  .small-icon {
+    height: 50px;
+    width: 50px;
+
+    .player-frame {
+      height: 50px;
+      width: 50px;
+    }
+
+    .player-icon-bg {
+      background-size: 30px;
+    }
+
+    .player-rank {
+      display: none;
+    }
+  }
+}

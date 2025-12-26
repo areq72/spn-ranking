@@ -20,3 +20,9 @@ p {
     height: 300px;
   }
 }
+
+@media (max-width: 400px) {
+  .demo-chart {
+    width: 300px;
+  }
+}

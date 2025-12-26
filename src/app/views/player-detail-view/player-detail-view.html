@@ -2,21 +2,7 @@
   <div class="player-header">
     <div class="container">
       <div class="player-row">
-        <div class="icon-container">
-          <div
-            class="player-border"
-            [style.background-image]="'url(' + borderUrl() + ')'">
-            <div class="player-icon">
-              <img
-                [src]="'https://ddragon.leagueoflegends.com/cdn/' + environment.lolPatch + '/img/profileicon/' + playerRs.value()?.profileInfo?.profileIconId + '.png'"
-                alt="Summoner icon" />
-            </div>
-          </div>
-
-          <div class="player-rank">
-            {{ playerRs.value()?.profileInfo?.summonerLevel }}
-          </div>
-        </div>
+        <app-summoner-icon [profileInfo]="playerRs.value()?.profileInfo"></app-summoner-icon>
 
         <div class="player-identity">
           <div class="player-name">{{ playerRs.value()?.name }}</div>

@@ -1,0 +1,18 @@
+<div class="icon-container" [class.small-icon]="smallIcon()">
+  <div class="player-frame">
+    <div
+      class="player-icon-bg"
+      [style.background-image]="'url(' + iconUrl() + ')'">
+    </div>
+
+    <img
+      class="player-border"
+      [src]="borderUrl()"
+      alt=""
+      aria-hidden="true" />
+  </div>
+
+  <div class="player-rank">
+    {{ profileInfo()?.summonerLevel }}
+  </div>
+</div>

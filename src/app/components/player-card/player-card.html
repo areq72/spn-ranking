@@ -21,11 +21,7 @@
       </div>
     </div>
 
-    <div class="player-card__avatar">
-      <img
-        [src]="'https://ddragon.leagueoflegends.com/cdn/' + environment.lolPatch + '/img/profileicon/' + player()?.profileInfo?.profileIconId + '.png'"
-        alt="Summoner icon" />
-    </div>
+    <app-summoner-icon [profileInfo]="player()?.profileInfo" [smallIcon]="true"></app-summoner-icon>
   </div>
 
   <div class="player-card__divider"></div>
