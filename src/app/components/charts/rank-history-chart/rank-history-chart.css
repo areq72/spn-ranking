@@ -1,5 +1,7 @@
 .demo-chart {
-  width: 350px;
+  display: flex;
+  justify-content: center;
+  width: 330px;
   height: 350px;
   justify-self: center;
   padding-top: 15px;

@@ -57,12 +57,15 @@
 
 .player-body {
   display: flex;
+  justify-self: center;
+  flex-direction: row;
+  gap: 20px;
   justify-content: center;
   margin-bottom: 20px;
+  max-width: 900px;
 }
 
 .swiper-container {
-  width: 900px;
   overflow: hidden;
   justify-content: start;
 }
@@ -86,7 +89,8 @@ swiper-slide.charts-slide {
 }
 
 .chart-container {
-  width: 400px;
+  width: 480px;
+  height: 100%;
   justify-content: center;
   align-items: center;
   background: var(--spn-black-soft-70);
@@ -94,10 +98,15 @@ swiper-slide.charts-slide {
   border-radius: 18px;
 }
 
+.small-chart {
+  width: 400px  ;
+}
+
 @media (max-width: 900px) {
   .player-header {
     min-height: 150px;
   }
+
   .player-icon {
     width: 60px;
     height: 60px;
@@ -117,17 +126,24 @@ swiper-slide.charts-slide {
     font-size: 16px;
   }
 
+  .player-body {
+    flex-direction: column;
+  }
+
   .swiper-container {
-    width: 100%;
+    width: calc(100vw - 40px);
     padding: 0 20px;
     overflow: hidden;
+    justify-self: center;
   }
 
   .chart-container {
-    width: 100%;
+    width: unset;
   }
 
   .history-chart-container {
-    padding: 20px;
+    width: calc(100vw - 40px);
+    justify-self: center;
+    margin: 0 20px;
   }
 }
