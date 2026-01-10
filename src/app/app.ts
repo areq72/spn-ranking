@@ -15,7 +15,7 @@ export class App {
   private themeService = inject(ThemeService);
   private router = inject(Router);
 
-  logo = signal<string>('spn-logo-winter.svg');
+  logo = signal<string>('spn-logo.svg');
   currentUrl = toSignal(
     this.router.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd),
@@ -29,6 +29,6 @@ export class App {
   });
 
   constructor() {
-    this.themeService.setTheme('winter');
+    this.themeService.setTheme('default');
   }
 }

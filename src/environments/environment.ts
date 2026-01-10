@@ -1,5 +1,5 @@
 export const environment = {
-  baseUrl: 'http://localhost:3000',
-  // baseUrl: 'https://spn-production-24d6.up.railway.app',
-  lolPatch: '15.23.1'
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://spn-production-24d6.up.railway.app',
+  lolPatch: '16.1.1'
 }
