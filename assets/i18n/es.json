@@ -21,7 +21,9 @@
     "GOLD": "Oro",
     "SILVER": "Plata",
     "BRONZE": "Bronce",
-    "IRON": "Hierro"
+    "IRON": "Hierro",
+    "null": "Unranked",
+    "UNKNOWN": "Unranked"
   },
 
   "divisions": {
